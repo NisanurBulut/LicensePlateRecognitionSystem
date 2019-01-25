@@ -97,9 +97,14 @@ Gri seviyeli görüntünün ikili seviyeye dönüştürülebilmesi için otsu al
 Otsu Algortiması eşik değer yöntemi mümkün olan bütün eşik değerler için(255'e kadar yani) bütün eşik değerler için sınıf-içi varyans denilen bir değer hesaplar ve bu değerin en düşük olduğu indeksi döndürür. Sınıf-içi varyansın minimize edilmesi derken kast edilen sınıflar önyüz(foreground) ve arkayüz(background) pikselleridir. O an incelenen renk değerinden büyük olan piksellere önyüz pikselleri; küçük olanlar arkayüz pikselleri denir. Bir renk için histogramda(buckets) o renkten büyük olan renklerin([i:]) frekanslarının  toplamının(np.sum) toplam piksel sayısına(image_size) bölümü bize önyüz renklerinin ağırlığını verir. Bu değerin 1 sayısından çıkarılmasıyla arkayüz ağırlığı elde edilir.
 Varyans hesabı yapabilmek için önce sınıfların ortalama değerleri bulunmalıdır. Bunun için her sınıf için o sınıfa üye olan renklerin kendi değerleri ile o renkteki piksel sayısı çarpılır ve sonuç, kümeye ait toplam piksel sayısına bölünür.
 Otsu algoritmasının kullanımı için .dll dosyasından yararlanılmıştır. Bu method birebir proje içerisinde kodlanmamıştır.
- Resim6-Otsu algoritması için  dll dosyası çağrısı. Resim7-otsu algoritması çalıştırılması
- 
-Resim8-Otsu algoritması uygulaması
+
+![Resim6-Otsu algoritması için  dll dosyası çağrısı.](https://github.com/NisanurBulut/PlakaTanimaSistemi/blob/master/PlakaTanimaSistemi/ProjeTanitimImages/6.jpg)
+
+![Resim7-otsu algoritması çalıştırılması](https://github.com/NisanurBulut/PlakaTanimaSistemi/blob/master/PlakaTanimaSistemi/ProjeTanitimImages/otsu2.jpg)
+
+
+ ![Resim8-Otsu algoritması uygulaması](https://github.com/NisanurBulut/PlakaTanimaSistemi/blob/master/PlakaTanimaSistemi/ProjeTanitimImages/otsu3.jpg)
+
 
 4.	Morfolojik İşlemler
 
