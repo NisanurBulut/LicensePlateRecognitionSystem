@@ -151,10 +151,14 @@ Görüntü üzerinde filtreleme işlemlerinin ve morfolojik işlemlerin yapılma
 
 	Filtre genişliği 70 pixel, yüksekliği 40 pixel den küçük olan gürültüleri yok etmek için kullanılmıştır.
 	Üzerinde işlem yapılan görüntüde kalan noktasal gürültülerden kurtulmak amaçlanır.
+
+![Resim13-Gürültü temizleme kod parçacığı](https://github.com/NisanurBulut/PlakaTanimaSistemi/blob/master/PlakaTanimaSistemi/ProjeTanitimImages/g1.jpg) 
  
-Resim13-Gürültü temizleme kod parçacığı
  
-Resim14-Gürültü temizleme işlem sonucu
+![]() 
+ 
+![Resim14-Gürültü temizleme işlem sonucu](https://github.com/NisanurBulut/PlakaTanimaSistemi/blob/master/PlakaTanimaSistemi/ProjeTanitimImages/g2.jpg) 
+
 
 5.	Aforge Kütüphanesi ve Damla Filtreleme İşlemi
 
