@@ -70,9 +70,6 @@ Gri seviyeye indirgenmiş olan görüntü üzerinde keskin geçişleri en az sev
 Median filtrenin tercih edilme sebebi ortalama alıcı filtreyle kıyaslandığında daha sağlıklı sonuçlar vermesidir. Görüntü üzerindeki detay kaybı daha az olur. Bir pikselin değerini değiştirirken komşularının ve kendisinin ortalamasını almak yerine komşuları içinde ortanca değer ile değişim yapar.
 Temsil yeteneği uzak bir piksel sıralanan dizinin uçlarında kalacağından (hiç bir zaman ortada bulunmayacaktır) oradaki komşuların genel temsilini etkilemesi imkansız hale gelmiş olur.
 Komşu piksellerin birinin değeri olması gerektiği için, kenar boyunca hareket ettiğinde gerçekçi olmayan piksel değerleri oluşturmaz. Bu nedenle, medyan filtre, keskin kenarları ortalama filtreden daha iyi korur
-
- 
- 
 Filtreleme işlemleri ExtBitmap C# sınıfı içerisinde tanımlanmıştır. 3x3 Matrix boyutu kullanılmıştır
 
 ![Resim3-ExtBitmap sınıfı genel görünümü](https://github.com/NisanurBulut/PlakaTanimaSistemi/blob/master/PlakaTanimaSistemi/ProjeTanitimImages/3.png)
@@ -84,12 +81,16 @@ Filtreleme işlemleri ExtBitmap C# sınıfı içerisinde tanımlanmıştır. 3x3
 
 Median filtre uygulanarak gürültüsü azaltılmış, keskin geçişler azaltılacaktır.  Görüntü üzerinde kenar bulma işlemi için sobel filtresi kullanılacaktır. Dikey, yatay ve köşegen şeklindeki kenarları bulmak için kullanılacaktır.  
 
-![](https://github.com/NisanurBulut/PlakaTanimaSistemi/blob/master/PlakaTanimaSistemi/ProjeTanitimImages/sobel.jpg)
-![Resim5-Sobel filtrelerinin uygulama içerisinde gösterimi](https://github.com/NisanurBulut/PlakaTanimaSistemi/blob/master/PlakaTanimaSistemi/ProjeTanitimImages/5.jpg)	 
+![](https://github.com/NisanurBulut/PlakaTanimaSistemi/blob/master/PlakaTanimaSistemi/ProjeTanitimImages/sobel.JPG)
 
 
+![Resim5-Sobel filtrelerinin uygulama içerisinde gösterimi](https://github.com/NisanurBulut/PlakaTanimaSistemi/blob/master/PlakaTanimaSistemi/ProjeTanitimImages/5.png)	 
+
+![Resim5-Sobel filtrelerisinin uygulaması](https://github.com/NisanurBulut/PlakaTanimaSistemi/blob/master/PlakaTanimaSistemi/ProjeTanitimImages/6.png)	 
  
-Resim5-Sobel filtrelerisinin uygulaması
+
+
+
 3.4	Otsu Algoritması
 
 Gri seviyeli görüntünün ikili seviyeye dönüştürülebilmesi için otsu algoritması kullanılacaktır. İkili seviyeye dönüştürmek için bir eşik değeri belirlenir. Bu eşik değerinin altında kalan pikseller siyaha dönüştürülürken üstünde kalan pikseller beyaza dönüştürülür. Ancak her görüntü aynı niteliklere sahip değildir dolayısıyla her görüntünün kendine has eşik değerinin hesaplanmasına ihtiyaç duyulur. Uygulamanın bu adımında, eşik değerinin tespit edilmesi için Otsu Algoritması kullanılacaktır.
