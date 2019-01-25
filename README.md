@@ -204,8 +204,8 @@ Tablo1-Programın çalışma sürecinin gösterilmesi
 
 
 **Filtre işlemlerinin gösterimi**
- 	 
-
+![](https://github.com/NisanurBulut/PlakaTanimaSistemi/blob/master/PlakaTanimaSistemi/ProjeTanitimImages/u3.JPG) 
+![](https://github.com/NisanurBulut/PlakaTanimaSistemi/blob/master/PlakaTanimaSistemi/ProjeTanitimImages/u4.JPG) 
 
 Proje Kaynak Kodu: https://github.com/NisanurBulut/PlakaTanimaSistemi
 
