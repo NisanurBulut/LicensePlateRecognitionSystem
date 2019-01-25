@@ -27,9 +27,10 @@ Araç Fotoğraflarından plaka tanıma işlemi yapan masaüstü uygulamadır.
 
 
 
-1.	Plaka Tanıma Yazılımı Nedir?
+**1.	Plaka Tanıma Yazılımı Nedir?**
 Plaka Tanıma Sistemi kameralardan elde edilen araç görüntüsünün üzerinde plaka bölgesi tespit edilerek ve ayrıştırılarak, plaka üzerinde bulunan karakterlerin optik karakter tanıma (Görüntü İşleme) yöntemleri ile okunması işlemidir. Dijital görüntülerin alınması sayesinde plaka okumasının gerçekleştiriliyor olması sayesinde, yazılım tabanlı olarak çalışırlar. Projeye göre değişik uygulamaları olup, uygulamaya özel algoritma ve donanım yapısının bir araya getirilmesi ile oluşturulan bir sistemdir.
-2.	Plaka Tanıma Yazılımının Hedefleri
+
+**2.	Plaka Tanıma Yazılımının Hedefleri**
 
 Araçların plaka bilgisinin, görüntülerden elde edilmesiyle aslında aracın kimlik bilgisi elde edilir. Bu sayede bir araca dair aşağıda belirtilen durumlar takip edilebilir.
 a)	Otoyol, köprü ve gişelerden geçen araçların çalıntı veya ihlal bilgilerine ulaşabilmek ve analizlerini yapabilmek
@@ -44,7 +45,7 @@ i)	Akıllı trafik sistemlerinin kurulması
 j)	Otopark kontrolü, yoğunluk ölçümleri
 k)	Kayıtlı olan ve ya geçiş yetkisi bulunan araçlar için otomatik bariyer devreye girmesi ya da yasaklı, izinsiz araçların geçmeye çalışma durumunda alarmın devreye girmesi
 
-3.	Kullanılan Yöntemler
+**3.	Kullanılan Yöntemler**
 
 Aracın plaka bilgisinin elde edilebilmesi için plakanın koordinat bilgisi bilinmelidir.Kordinatların yer tespitinin ardından karakter tanıma işlemi yapılır.  Genel anlamda süreç adım adım ifade edilecek olursa aşağıdaki gibi listelenir.
 
@@ -55,7 +56,7 @@ d)	Karakter ayırma ile görüntüden karakterlerin çıkarılması
 e)	Optik karakter tanıma
 f)	Ülkeye özgü söz dizimi ve geometrik kontroller
 
-3.1	Gri Seviye İndirgeme
+**3.1	Gri Seviye İndirgeme**
 
 Uygulama sürecinde görüntü işleme hızını artırabilmek için RGB formattaki görüntü, ortalama değer yöntemiyle gri seviyeye indirgenmiştir. Byte veri tipi dönüşümü yapılır. 
 
@@ -64,7 +65,7 @@ Uygulama sürecinde görüntü işleme hızını artırabilmek için RGB formatt
  
 ![Resim2-Gri Seviye İndirgeme Sonucu](https://github.com/NisanurBulut/PlakaTanimaSistemi/blob/master/PlakaTanimaSistemi/ProjeTanitimImages/2.jpg)
  
-3.2	Median Filtreleme
+**3.2	Median Filtreleme**
 
 Gri seviyeye indirgenmiş olan görüntü üzerinde keskin geçişleri en az seviyeye indirmek için median filtre uygulanacaktır. Median filtre 3x3, 5x5, 7x7 gibi tek sayı boyutlu filtrelerden oluşur. Görüntüyü yumuşatır. Kullanılan çekirdek şablonun yani filtrenin boyutu arttıkça yumuşama yani bulanıklaşma da artar.
 Median filtrenin tercih edilme sebebi ortalama alıcı filtreyle kıyaslandığında daha sağlıklı sonuçlar vermesidir. Görüntü üzerindeki detay kaybı daha az olur. Bir pikselin değerini değiştirirken komşularının ve kendisinin ortalamasını almak yerine komşuları içinde ortanca değer ile değişim yapar.
@@ -77,7 +78,7 @@ Filtreleme işlemleri ExtBitmap C# sınıfı içerisinde tanımlanmıştır. 3x3
 ![Resim4- Median filtrenin uygulaması](https://github.com/NisanurBulut/PlakaTanimaSistemi/blob/master/PlakaTanimaSistemi/ProjeTanitimImages/4.jpg)
 
 
-3.3	Sobel Filtreleme
+**3.3	Sobel Filtreleme**
 
 Median filtre uygulanarak gürültüsü azaltılmış, keskin geçişler azaltılacaktır.  Görüntü üzerinde kenar bulma işlemi için sobel filtresi kullanılacaktır. Dikey, yatay ve köşegen şeklindeki kenarları bulmak için kullanılacaktır.  
 
@@ -91,7 +92,7 @@ Median filtre uygulanarak gürültüsü azaltılmış, keskin geçişler azaltı
 
 
 
-3.4	Otsu Algoritması
+**3.4	Otsu Algoritması**
 
 Gri seviyeli görüntünün ikili seviyeye dönüştürülebilmesi için otsu algoritması kullanılacaktır. İkili seviyeye dönüştürmek için bir eşik değeri belirlenir. Bu eşik değerinin altında kalan pikseller siyaha dönüştürülürken üstünde kalan pikseller beyaza dönüştürülür. Ancak her görüntü aynı niteliklere sahip değildir dolayısıyla her görüntünün kendine has eşik değerinin hesaplanmasına ihtiyaç duyulur. Uygulamanın bu adımında, eşik değerinin tespit edilmesi için Otsu Algoritması kullanılacaktır.
 Otsu Algortiması eşik değer yöntemi mümkün olan bütün eşik değerler için(255'e kadar yani) bütün eşik değerler için sınıf-içi varyans denilen bir değer hesaplar ve bu değerin en düşük olduğu indeksi döndürür. Sınıf-içi varyansın minimize edilmesi derken kast edilen sınıflar önyüz(foreground) ve arkayüz(background) pikselleridir. O an incelenen renk değerinden büyük olan piksellere önyüz pikselleri; küçük olanlar arkayüz pikselleri denir. Bir renk için histogramda(buckets) o renkten büyük olan renklerin([i:]) frekanslarının  toplamının(np.sum) toplam piksel sayısına(image_size) bölümü bize önyüz renklerinin ağırlığını verir. Bu değerin 1 sayısından çıkarılmasıyla arkayüz ağırlığı elde edilir.
@@ -106,7 +107,7 @@ Otsu algoritmasının kullanımı için .dll dosyasından yararlanılmıştır. 
  ![Resim8-Otsu algoritması uygulaması](https://github.com/NisanurBulut/PlakaTanimaSistemi/blob/master/PlakaTanimaSistemi/ProjeTanitimImages/otsu3.jpg)
 
 
-4.	Morfolojik İşlemler
+**4.	Morfolojik İşlemler**
 
 Görüntü üzerinde iskelet, imgedeki sınırlar gibi yapıların tanımlanması ve bilgi çıkarımı yapılması ve gürültü giderimi, bölütleme için matematiksel morfoloji işlemlerine ihtiyaç vardır. Morfolojik görüntü işleme şekillerin biçimsel yapısı ile ilgilenerek nesneleri ayırt etmemize ve gruplayabilmemize olanak sağlar. Yöntem gri seviye görüntüler üzerinde de çalışsa da genellikle siyah-beyaz (ikili) görüntüler üzerinde kullanılır. Morfolojik filtreler genelde iki temel işlemden türetilmiştir. Bunlar erosion (aşındırma) ve dilation (genişletme) işlemleridir. Aşındırma ikili bir görüntüde bulunan nesnelerin boyutunu seçilen yapısal elemente bağlı olarak küçültürken, genişletme nesnenin alanını artırır.
 
@@ -119,7 +120,7 @@ Görüntü üzerinde iskelet, imgedeki sınırlar gibi yapıların tanımlanmas�
 ![ Resim9-Dilation ve Erosion İşlemlerinin Extmap sınıfından çağrılması](https://github.com/NisanurBulut/PlakaTanimaSistemi/blob/master/PlakaTanimaSistemi/ProjeTanitimImages/Morfo3.jpg)
 
   
-4.1	Aşındırma İşlemi(Erosion)
+**4.1	Aşındırma İşlemi(Erosion)**
 
 Bu işlem için görüntü üzerinde n boyutlu bir çekirdek gezdirilecektir. Ortadaki n. piksel, resim üzerinde işlem yaptığımız piksele karşılık gelir. Bu n tane piksel resim üzerine konulduktan sonra, piksellerin tamamı beyaz alanla örtüştü ise yani, n tane pikselin hepsinin karşılığı olan alan beyaz ise o zaman üzerinde işlem yapılan piksel beyaz olarak işaretlenir. Eğer bu n tane pikselden herhangi biri siyah bir pikselin üzerine denk geldiyse o zaman ortadaki pikselin değeri siyah yapılır. Dikkat edilirse bu işlem ile siyah bölge genişletilirken, beyaz bölge aşındırılmış olmaktadır.
 
@@ -127,7 +128,7 @@ Bu işlem için görüntü üzerinde n boyutlu bir çekirdek gezdirilecektir. Or
  
 ![Resim9-Erozyon işleminin uygulanması](https://github.com/NisanurBulut/PlakaTanimaSistemi/blob/master/PlakaTanimaSistemi/ProjeTanitimImages/aşın1.jpg) 
 
-4.2	Genişletme İşlemi(Dilation)
+**4.2	Genişletme İşlemi(Dilation)**
 
 Genişletme işlemi aynı nesnenin bir gürültü ile ince bir şekilde bölünerek ayrı iki nesne gibi görünmesini engellemek için kullanılır. Aslında aşındırma ve genişletme işlemleri birbirinin tersidir. Görüntü üzerindeki alanlarda bu işlemlerden birini uygulandığında komşu diğer alanlar zıttı olan işleme tabi tutulmuş olur. Yani aşındırma uygularken komşu alanda genişletme uygulanmış olur.
 
@@ -135,7 +136,7 @@ Genişletme işlemi aynı nesnenin bir gürültü ile ince bir şekilde bölüne
 
 ![Resim10-Dilation İşlemi](https://github.com/NisanurBulut/PlakaTanimaSistemi/blob/master/PlakaTanimaSistemi/ProjeTanitimImages/aşın2.jpg) 
 
-4.3	Opening/Closing İşlemi
+**4.3	Opening/Closing İşlemi**
 
 Aşındırma ve genişletme işlemlerinin ardından  sırasıyla opening ve closing işlemleri yapılır. Buradaki amaç detayları ele geçirmektir. Kodlama aşamasında opening ve closing işlemlerinin yapıldığı methodlar Extmap sınıfı içinde tanımlanmıştır.
 
@@ -145,7 +146,7 @@ Aşındırma ve genişletme işlemlerinin ardından  sırasıyla opening ve clos
  
 
 
-4.4	Gürültü Yok etme
+**4.4	Gürültü Yok etme**
 
 Görüntü üzerinde filtreleme işlemlerinin ve morfolojik işlemlerin yapılmasının ardından kalan gürültüleri temizlemek için Aforge kütüphanesinden yararlanıldı. Görüntü üzerinde ﬁltreleme ve morfolojik işlemlerimizi yaptıktan sonra görüntü üzerinde kalan görültüleri temizlemek için AForge kütüphanesin BlobsFiltering yani damla ﬁltreleme işlemini uygulayarak verilen boyutlar dışında kalan bölgeleri temizledik. 
 
@@ -153,14 +154,11 @@ Görüntü üzerinde filtreleme işlemlerinin ve morfolojik işlemlerin yapılma
 	Üzerinde işlem yapılan görüntüde kalan noktasal gürültülerden kurtulmak amaçlanır.
 
 ![Resim13-Gürültü temizleme kod parçacığı](https://github.com/NisanurBulut/PlakaTanimaSistemi/blob/master/PlakaTanimaSistemi/ProjeTanitimImages/g1.jpg) 
- 
- 
-![]() 
- 
+
 ![Resim14-Gürültü temizleme işlem sonucu](https://github.com/NisanurBulut/PlakaTanimaSistemi/blob/master/PlakaTanimaSistemi/ProjeTanitimImages/g2.jpg) 
 
 
-5.	Aforge Kütüphanesi ve Damla Filtreleme İşlemi
+**5.	Aforge Kütüphanesi ve Damla Filtreleme İşlemi**
 
 Aforge kütüphanesi görüntü işleme alanında kullanılan açık kaynak kodlu bir  .NET kütüphanesidir. Görüntü üzerinde manuel olarak ya da otomatik olarak matematik işlemler yapılmasına olanak sağlar. Filtrelemeden sinir ağları hesaplamalarına değin pek çok alanda kolaylıklar sağlar.
 
@@ -170,25 +168,25 @@ Damla filtre yardımıyla, verilen boyutlardan küçük olan gürültüler temiz
 
  ![Resim 12-Damla filtresinin resim üzerindeki etkisi](https://github.com/NisanurBulut/PlakaTanimaSistemi/blob/master/PlakaTanimaSistemi/ProjeTanitimImages/d2.jpg) 
 
-6.	Filtre Uygulama İşlemlerinin Özeti
+**6.	Filtre Uygulama İşlemlerinin Özeti**
 Aforge kütüphanesinin yardımıyla, otsu algoritması için kullanılan dll dosyasının yardımıyla ve sobel, median filtrelerinin tanımlayıcı olarak kodlanmasıyla ardarda pek çok filtreleme işlemi yapılmıştır. Yapılan işlemler özetle sıralanacak olursa aşağıdaki gibidir. Ardarda pek çok filtreleme işlemi yaparak plaka görüntüsünün elde edilmesine uygun bir taslak hazırlanmaya çalışılmıştır.
 
-7.	Plaka Bilgisinin Araştırılması
+**7.	Plaka Bilgisinin Araştırılması**
 Görüntü üzerinde gürültü temizleme ve filtreleme işlemlerinin yapılmasının ardından plaka yerinin araştırılması işlemine geçilir. Bunun için Aforge kütüphanesinden yararlanılır ve plakanın koordinat bilgileri elde edilmeye çalışılacaktır.
 Türkiye’deki araç plakalarının birçoğunun görünümü dikdörtgen şeklindedir. Aforge kütüphanesi yardımıyla elde edilen plaka bölgesinin gerçekten plaka boyutlarına uygun olup olmadığını anlayabilmek için boyut kontrolü yapılmalıdır. Plaka boyutları ön taraf için genellikle 11x52 iken arka taraf için 21x32’dir. Sonuç olarak elde edilen görüntü plaka bilgisi olarak kullanıcıya sunulacaktır.
 
 	Uygulama sürecinde plaka tespiti yalnızca aracın ön tarafındaki plaka için yapılmıştır.
- 
-Resim13-Plaka bölgesinin çizimi
 
- 
-Resim14- Plaka bölgesinin çizilmesi için gerekli kod bloğu
- 
-Resim15-Plaka bölge sınırlarının belirlenmesi için gerekli kod bloğu
- 
-Resim16-Plaka bölgesinin dikdörtgen şekilde gösterimi
+![Resim13-Plaka bölgesinin çizimi](https://github.com/NisanurBulut/PlakaTanimaSistemi/blob/master/PlakaTanimaSistemi/ProjeTanitimImages/p1.jpg) 
 
-8.	Özet
+![Resim14- Plaka bölgesinin çizilmesi için gerekli kod bloğu](https://github.com/NisanurBulut/PlakaTanimaSistemi/blob/master/PlakaTanimaSistemi/ProjeTanitimImages/p2.jpg) 
+ 
+![Resim15-Plaka bölge sınırlarının belirlenmesi için gerekli kod bloğu](https://github.com/NisanurBulut/PlakaTanimaSistemi/blob/master/PlakaTanimaSistemi/ProjeTanitimImages/p3.jpg) 
+ 
+![Resim16-Plaka bölgesinin dikdörtgen şekilde gösterimi](https://github.com/NisanurBulut/PlakaTanimaSistemi/blob/master/PlakaTanimaSistemi/ProjeTanitimImages/p4.jpg) 
+ 
+
+**8.	Özet**
 Görüntünün gri seviyeye indirgenmesi, yumuşatma işlemi, kenar bulma filtesinin(sobel) kullanımı, aşındırma ve genişletme işlemlerinin yapılmasının ardından Aforge kütüphanesi yardımıyla plaka bölgesinin araştırılması ve belirlenmesi gerçekleştirilmiştir.
 	Proje C# programlama dili kullanılarak masaüstü uygulaması olarak gerçekleştirilmiştir.
 
