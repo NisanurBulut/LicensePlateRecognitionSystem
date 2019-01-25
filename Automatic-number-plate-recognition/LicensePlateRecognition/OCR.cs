@@ -62,7 +62,8 @@ namespace akıllıgecissistemleri
             openFileDialog1.Filter = "Resim Dosyaları (*.bmp)|*.jpg;*.gif;*.bmp;*.png;*.jpeg";
             openFileDialog1.Multiselect = false;
             openFileDialog1.FileName = "";
-            if (openFileDialog1.ShowDialog() != System.Windows.Forms.DialogResult.OK) return;
+            if (openFileDialog1.ShowDialog() != System.Windows.Forms.DialogResult.OK)
+                return;
             resimYukle(openFileDialog1.FileName);
         }
         private void resimYukle(string resimYolu)
