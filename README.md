@@ -166,10 +166,10 @@ Aforge kütüphanesi görüntü işleme alanında kullanılan açık kaynak kodl
 
 	Uygulama içinde, Aforge kütüphanesi yardımıyla gürültü temizleme işlemi için damla filtre metodu kullanılacaktır.
 Damla filtre yardımıyla, verilen boyutlardan küçük olan gürültüler temizlenir. Kütüphane bunun için BlobsFiltering metodunu kullanıma sunar.
- 
-Resim11-Dilation uygulanan resme damla filtresinin uygulanması
- 
-Resim 12-Damla filtresinin resim üzerindeki etkisi
+![Resim11-Dilation uygulanan resme damla filtresinin uygulanması](https://github.com/NisanurBulut/PlakaTanimaSistemi/blob/master/PlakaTanimaSistemi/ProjeTanitimImages/d1.jpg) 
+
+ ![Resim 12-Damla filtresinin resim üzerindeki etkisi](https://github.com/NisanurBulut/PlakaTanimaSistemi/blob/master/PlakaTanimaSistemi/ProjeTanitimImages/d2.jpg) 
+
 6.	Filtre Uygulama İşlemlerinin Özeti
 Aforge kütüphanesinin yardımıyla, otsu algoritması için kullanılan dll dosyasının yardımıyla ve sobel, median filtrelerinin tanımlayıcı olarak kodlanmasıyla ardarda pek çok filtreleme işlemi yapılmıştır. Yapılan işlemler özetle sıralanacak olursa aşağıdaki gibidir. Ardarda pek çok filtreleme işlemi yaparak plaka görüntüsünün elde edilmesine uygun bir taslak hazırlanmaya çalışılmıştır.
 
