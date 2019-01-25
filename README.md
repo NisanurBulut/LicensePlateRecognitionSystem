@@ -60,13 +60,10 @@ f)	Ülkeye özgü söz dizimi ve geometrik kontroller
 Uygulama sürecinde görüntü işleme hızını artırabilmek için RGB formattaki görüntü, ortalama değer yöntemiyle gri seviyeye indirgenmiştir. Byte veri tipi dönüşümü yapılır. 
 
 	Resim üzerinde yapılan her işlemin tamamlanma süreci, progressbar ile gösterilir.
-
+![Resim 1- Gri Seviye İndirgeme C# Kod Bloğu](https://github.com/NisanurBulut/PlakaTanimaSistemi/blob/master/PlakaTanimaSistemi/ProjeTanitimImages/1.png)
  
-Resim 1- Gri Seviye İndirgeme C# Kod Bloğu
-
+![Resim2-Gri Seviye İndirgeme Sonucu](https://github.com/NisanurBulut/PlakaTanimaSistemi/blob/master/PlakaTanimaSistemi/ProjeTanitimImages/2.jpg)
  
-Resim2-Gri Seviye İndirgeme Sonucu
-
 3.2	Median Filtreleme
 
 Gri seviyeye indirgenmiş olan görüntü üzerinde keskin geçişleri en az seviyeye indirmek için median filtre uygulanacaktır. Median filtre 3x3, 5x5, 7x7 gibi tek sayı boyutlu filtrelerden oluşur. Görüntüyü yumuşatır. Kullanılan çekirdek şablonun yani filtrenin boyutu arttıkça yumuşama yani bulanıklaşma da artar.
@@ -77,12 +74,11 @@ Komşu piksellerin birinin değeri olması gerektiği için, kenar boyunca harek
  
  
 Filtreleme işlemleri ExtBitmap C# sınıfı içerisinde tanımlanmıştır. 3x3 Matrix boyutu kullanılmıştır
- 
-Resim3-ExtBitmap sınıfı genel görünümü
 
+![Resim3-ExtBitmap sınıfı genel görünümü](https://github.com/NisanurBulut/PlakaTanimaSistemi/blob/master/PlakaTanimaSistemi/ProjeTanitimImages/3.png)
 
- 
-Resim4- Median filtrenin uygulaması
+![Resim4- Median filtrenin uygulaması](https://github.com/NisanurBulut/PlakaTanimaSistemi/blob/master/PlakaTanimaSistemi/ProjeTanitimImages/4.jpg)
+
 
 3.3	Sobel Filtreleme
 
