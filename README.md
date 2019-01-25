@@ -196,17 +196,14 @@ a)	Kullanıcı Dosya seç butonunu kullanarak, plakasını tanımak istediği fo
 b)	Fotoğrafın yüklenmesinin ardından, plaka tespit butonu tıklanarak plaka tanıma işlemi başlatılır.
 c)	Plaka tanıma işlemi tamamlandığında, kullanıcıya plaka gösterimi yapılır.
  	 
-Program başlangıç ekranı	Fotoğrafın programa tanıtılması
- 	 
-Plaka tespit aşaması	Plaka tespitinin tamamlanması
 Tablo1-Programın çalışma sürecinin gösterilmesi
-Filtre işlemlerinin gösterimi
- 	 
- 	 
- 	 
- 	 
- 	 
- 	 
+
+![Program başlangıç ekranı	Fotoğrafın programa tanıtılması](https://github.com/NisanurBulut/PlakaTanimaSistemi/blob/master/PlakaTanimaSistemi/ProjeTanitimImages/u1.JPG) 
+
+![Plaka tespit aşaması	Plaka tespitinin tamamlanması](https://github.com/NisanurBulut/PlakaTanimaSistemi/blob/master/PlakaTanimaSistemi/ProjeTanitimImages/u1.JPG) 
+
+
+**Filtre işlemlerinin gösterimi**
  	 
 
 
