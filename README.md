@@ -183,7 +183,7 @@ Türkiye’deki araç plakalarının birçoğunun görünümü dikdörtgen şekl
  
 ![Resim15-Plaka bölge sınırlarının belirlenmesi için gerekli kod bloğu](https://github.com/NisanurBulut/PlakaTanimaSistemi/blob/master/PlakaTanimaSistemi/ProjeTanitimImages/p3.jpg) 
  
-![Resim16-Plaka bölgesinin dikdörtgen şekilde gösterimi](https://github.com/NisanurBulut/PlakaTanimaSistemi/blob/master/PlakaTanimaSistemi/ProjeTanitimImages/p4.jpg) 
+![Resim16-Plaka bölgesinin dikdörtgen şekilde gösterimi](https://github.com/NisanurBulut/PlakaTanimaSistemi/blob/master/PlakaTanimaSistemi/ProjeTanitimImages/p5.jpg) 
  
 
 **8.	Özet**
