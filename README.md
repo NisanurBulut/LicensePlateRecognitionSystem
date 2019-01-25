@@ -74,12 +74,11 @@ Komşu piksellerin birinin değeri olması gerektiği için, kenar boyunca harek
  
  
 Filtreleme işlemleri ExtBitmap C# sınıfı içerisinde tanımlanmıştır. 3x3 Matrix boyutu kullanılmıştır
- 
-Resim3-ExtBitmap sınıfı genel görünümü
 
+![Resim3-ExtBitmap sınıfı genel görünümü](https://github.com/NisanurBulut/PlakaTanimaSistemi/blob/master/PlakaTanimaSistemi/ProjeTanitimImages/3.png)
 
- 
-Resim4- Median filtrenin uygulaması
+![Resim4- Median filtrenin uygulaması](https://github.com/NisanurBulut/PlakaTanimaSistemi/blob/master/PlakaTanimaSistemi/ProjeTanitimImages/4.jpg)
+
 
 3.3	Sobel Filtreleme
 
