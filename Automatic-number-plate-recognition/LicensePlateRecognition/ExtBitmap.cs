@@ -18,9 +18,7 @@ namespace akıllıgecissistemleri
 
             ratio = (float)maxSide / (float)canvasWidthLenght;
 
-            Bitmap bitmapResult = (sourceBitmap.Width > sourceBitmap.Height ?
-                                    new Bitmap(canvasWidthLenght, (int)(sourceBitmap.Height / ratio))
-                                    : new Bitmap((int)(sourceBitmap.Width / ratio), canvasWidthLenght));
+            Bitmap bitmapResult = (sourceBitmap.Width > sourceBitmap.Height ?new Bitmap(canvasWidthLenght, (int)(sourceBitmap.Height / ratio)) : new Bitmap((int)(sourceBitmap.Width / ratio), canvasWidthLenght));
 
             using (Graphics graphicsResult = Graphics.FromImage(bitmapResult))
             {
