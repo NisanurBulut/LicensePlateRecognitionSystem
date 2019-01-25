@@ -240,7 +240,6 @@ namespace akıllıgecissistemleri
             Bitmap resultBitmap = sourceBitmap.DilateAndErodeFilter(matrixSize,MorphologyType.Dilation,applyBlue, applyGreen, applyRed);
 
             resultBitmap = resultBitmap.DilateAndErodeFilter(matrixSize,MorphologyType.Erosion,applyBlue, applyGreen, applyRed);
-
             return resultBitmap;
         }
         public static Bitmap DilateAndErodeFilter(this Bitmap sourceBitmap,int matrixSize, MorphologyType morphType, bool applyBlue = true,bool applyGreen = true, bool applyRed = true)
