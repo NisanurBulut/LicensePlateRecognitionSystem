@@ -111,32 +111,39 @@ Otsu algoritmasının kullanımı için .dll dosyasından yararlanılmıştır. 
 Görüntü üzerinde iskelet, imgedeki sınırlar gibi yapıların tanımlanması ve bilgi çıkarımı yapılması ve gürültü giderimi, bölütleme için matematiksel morfoloji işlemlerine ihtiyaç vardır. Morfolojik görüntü işleme şekillerin biçimsel yapısı ile ilgilenerek nesneleri ayırt etmemize ve gruplayabilmemize olanak sağlar. Yöntem gri seviye görüntüler üzerinde de çalışsa da genellikle siyah-beyaz (ikili) görüntüler üzerinde kullanılır. Morfolojik filtreler genelde iki temel işlemden türetilmiştir. Bunlar erosion (aşındırma) ve dilation (genişletme) işlemleridir. Aşındırma ikili bir görüntüde bulunan nesnelerin boyutunu seçilen yapısal elemente bağlı olarak küçültürken, genişletme nesnenin alanını artırır.
 
 	Morfolojik işlemler enum olarak kodlama içerisinde yer almıştır.
- 
+ ![](https://github.com/NisanurBulut/PlakaTanimaSistemi/blob/master/PlakaTanimaSistemi/ProjeTanitimImages/Morfo1.jpg)
 
 	Uygulama için otsu görüntü üzerinde morfolojik işlemler olan yayma ve aşındırma işlemleri yapılacaktır.
- 
- Resim9-Dilation ve Erosion İşlemlerinin Extmap sınıfından çağrılması
+ ![](https://github.com/NisanurBulut/PlakaTanimaSistemi/blob/master/PlakaTanimaSistemi/ProjeTanitimImages/Morfo2.jpg)
+
+![ Resim9-Dilation ve Erosion İşlemlerinin Extmap sınıfından çağrılması](https://github.com/NisanurBulut/PlakaTanimaSistemi/blob/master/PlakaTanimaSistemi/ProjeTanitimImages/Morfo3.jpg)
 
   
 4.1	Aşındırma İşlemi(Erosion)
+
 Bu işlem için görüntü üzerinde n boyutlu bir çekirdek gezdirilecektir. Ortadaki n. piksel, resim üzerinde işlem yaptığımız piksele karşılık gelir. Bu n tane piksel resim üzerine konulduktan sonra, piksellerin tamamı beyaz alanla örtüştü ise yani, n tane pikselin hepsinin karşılığı olan alan beyaz ise o zaman üzerinde işlem yapılan piksel beyaz olarak işaretlenir. Eğer bu n tane pikselden herhangi biri siyah bir pikselin üzerine denk geldiyse o zaman ortadaki pikselin değeri siyah yapılır. Dikkat edilirse bu işlem ile siyah bölge genişletilirken, beyaz bölge aşındırılmış olmaktadır.
+
 	Uygulama için birbirine ince gürültülerle bağlanmış nesneleri birbirinden ayırarak gürültü temizleme yapılmak amaçlanmıştır.
  
-Resim9-Erozyon işleminin uygulanması
+![Resim9-Erozyon işleminin uygulanması](https://github.com/NisanurBulut/PlakaTanimaSistemi/blob/master/PlakaTanimaSistemi/ProjeTanitimImages/aşın1.jpg) 
+
 4.2	Genişletme İşlemi(Dilation)
 
 Genişletme işlemi aynı nesnenin bir gürültü ile ince bir şekilde bölünerek ayrı iki nesne gibi görünmesini engellemek için kullanılır. Aslında aşındırma ve genişletme işlemleri birbirinin tersidir. Görüntü üzerindeki alanlarda bu işlemlerden birini uygulandığında komşu diğer alanlar zıttı olan işleme tabi tutulmuş olur. Yani aşındırma uygularken komşu alanda genişletme uygulanmış olur.
 
 	Uygulama için genişletme işlemi aynı nesnenin bir gürültü ile ince bir şekilde bölünerek ayrı iki nesne gibi görünmesini engellemek için kullanılır.
- 
-Resim10-Dilation İşlemi
+
+![Resim10-Dilation İşlemi](https://github.com/NisanurBulut/PlakaTanimaSistemi/blob/master/PlakaTanimaSistemi/ProjeTanitimImages/aşın2.jpg) 
+
 4.3	Opening/Closing İşlemi
+
 Aşındırma ve genişletme işlemlerinin ardından  sırasıyla opening ve closing işlemleri yapılır. Buradaki amaç detayları ele geçirmektir. Kodlama aşamasında opening ve closing işlemlerinin yapıldığı methodlar Extmap sınıfı içinde tanımlanmıştır.
 
+![Resim11-Opening&Closing işleminin çağrısı](https://github.com/NisanurBulut/PlakaTanimaSistemi/blob/master/PlakaTanimaSistemi/ProjeTanitimImages/open1.jpg) 
  
-Resim11-Opening&Closing işleminin çağrısı
+![Resim 12-Closing işlem uygulamasının sonucu](https://github.com/NisanurBulut/PlakaTanimaSistemi/blob/master/PlakaTanimaSistemi/ProjeTanitimImages/open2.jpg) 
  
-Resim 12-Closing işlem uygulamasının sonucu
+
 
 4.4	Gürültü Yok etme
 
