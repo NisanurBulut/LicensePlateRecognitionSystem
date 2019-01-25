@@ -1,4 +1,4 @@
-# PlakaTanimaSistemi
+# Plaka Tanima Sistemi
 Araç Fotoğraflarından plaka tanıma işlemi yapan masaüstü uygulamadır.
 
  
@@ -81,6 +81,7 @@ Filtreleme işlemleri ExtBitmap C# sınıfı içerisinde tanımlanmıştır. 3x3
 **3.3	Sobel Filtreleme**
 
 Median filtre uygulanarak gürültüsü azaltılmış, keskin geçişler azaltılacaktır.  Görüntü üzerinde kenar bulma işlemi için sobel filtresi kullanılacaktır. Dikey, yatay ve köşegen şeklindeki kenarları bulmak için kullanılacaktır.  
+![](https://github.com/NisanurBulut/PlakaTanimaSistemi/blob/master/PlakaTanimaSistemi/ProjeTanitimImages/sobel3.JPG)
 
 ![](https://github.com/NisanurBulut/PlakaTanimaSistemi/blob/master/PlakaTanimaSistemi/ProjeTanitimImages/sobel.JPG)
 
