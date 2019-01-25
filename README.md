@@ -84,15 +84,7 @@ Filtreleme işlemleri ExtBitmap C# sınıfı içerisinde tanımlanmıştır. 3x3
 
 Median filtre uygulanarak gürültüsü azaltılmış, keskin geçişler azaltılacaktır.  Görüntü üzerinde kenar bulma işlemi için sobel filtresi kullanılacaktır. Dikey, yatay ve köşegen şeklindeki kenarları bulmak için kullanılacaktır.  
 
-	Kullanılacak olan çekirdek şablonlar aşağıdadır.
-
--1	0	+1
--2	0	+2
--1	0	+1
-+1	+2	+1
-0	0	0
--1	-2	-1
-
+![](https://github.com/NisanurBulut/PlakaTanimaSistemi/blob/master/PlakaTanimaSistemi/ProjeTanitimImages/4.jpg)
 	 
 Resim5-Sobel filtrelerinin uygulama içerisinde gösterimi
 
