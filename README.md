@@ -33,6 +33,7 @@ Plaka Tanıma Sistemi kameralardan elde edilen araç görüntüsünün üzerinde
 **2.	Plaka Tanıma Yazılımının Hedefleri**
 
 Araçların plaka bilgisinin, görüntülerden elde edilmesiyle aslında aracın kimlik bilgisi elde edilir. Bu sayede bir araca dair aşağıda belirtilen durumlar takip edilebilir.
+
 a)	Otoyol, köprü ve gişelerden geçen araçların çalıntı veya ihlal bilgilerine ulaşabilmek ve analizlerini yapabilmek </br>
 b)	Otopark, site, nizamiye ve buna benzer kontrollü geçiş noktalarının giriş ve çıkışlarında insan gücünü hafifletmek, kolay, hızlı, güvenli giriş ve çıkışlarını sağlamak </br>
 c)	Kantar, araç muayene istasyonları ve buna benzer yerlerde plaka bilgilerine otomatik olarak ulaşabilmek </br>
