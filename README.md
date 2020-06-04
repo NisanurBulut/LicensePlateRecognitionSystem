@@ -28,6 +28,7 @@ Araç Fotoğraflarından plaka tanıma işlemi yapan masaüstü uygulamadır.
 
 
 **1.	Plaka Tanıma Yazılımı Nedir?**
+
 Plaka Tanıma Sistemi kameralardan elde edilen araç görüntüsünün üzerinde plaka bölgesi tespit edilerek ve ayrıştırılarak, plaka üzerinde bulunan karakterlerin optik karakter tanıma (Görüntü İşleme) yöntemleri ile okunması işlemidir. Dijital görüntülerin alınması sayesinde plaka okumasının gerçekleştiriliyor olması sayesinde, yazılım tabanlı olarak çalışırlar. Projeye göre değişik uygulamaları olup, uygulamaya özel algoritma ve donanım yapısının bir araya getirilmesi ile oluşturulan bir sistemdir.
 
 **2.	Plaka Tanıma Yazılımının Hedefleri**
