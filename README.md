@@ -33,17 +33,17 @@ Plaka Tanıma Sistemi kameralardan elde edilen araç görüntüsünün üzerinde
 **2.	Plaka Tanıma Yazılımının Hedefleri**
 
 Araçların plaka bilgisinin, görüntülerden elde edilmesiyle aslında aracın kimlik bilgisi elde edilir. Bu sayede bir araca dair aşağıda belirtilen durumlar takip edilebilir.
-a)	Otoyol, köprü ve gişelerden geçen araçların çalıntı veya ihlal bilgilerine ulaşabilmek ve analizlerini yapabilmek
-b)	Otopark, site, nizamiye ve buna benzer kontrollü geçiş noktalarının giriş ve çıkışlarında insan gücünü hafifletmek, kolay, hızlı, güvenli giriş ve çıkışlarını sağlamak
-c)	Kantar, araç muayene istasyonları ve buna benzer yerlerde plaka bilgilerine otomatik olarak ulaşabilmek
-d)	Şehir giriş ve çıkışlarının kontrol altında tutulması, şehir güvenliğinin sağlanması
-e)	Karayollarının araç yoğunluk ölçümlerinin yapılması
-f)	Karayollarının stratejik ulaşım analizlerinin yapılması
-g)	Trafik düzenleme işlemleri
-h)	İki nokta arasında araçların ulaşım süresinin belirlenmesi, bilgi panosuna aktarılması
-i)	Akıllı trafik sistemlerinin kurulması
-j)	Otopark kontrolü, yoğunluk ölçümleri
-k)	Kayıtlı olan ve ya geçiş yetkisi bulunan araçlar için otomatik bariyer devreye girmesi ya da yasaklı, izinsiz araçların geçmeye çalışma durumunda alarmın devreye girmesi
+a)	Otoyol, köprü ve gişelerden geçen araçların çalıntı veya ihlal bilgilerine ulaşabilmek ve analizlerini yapabilmek </br>
+b)	Otopark, site, nizamiye ve buna benzer kontrollü geçiş noktalarının giriş ve çıkışlarında insan gücünü hafifletmek, kolay, hızlı, güvenli giriş ve çıkışlarını sağlamak </br>
+c)	Kantar, araç muayene istasyonları ve buna benzer yerlerde plaka bilgilerine otomatik olarak ulaşabilmek </br>
+d)	Şehir giriş ve çıkışlarının kontrol altında tutulması, şehir güvenliğinin sağlanması </br>
+e)	Karayollarının araç yoğunluk ölçümlerinin yapılması </br>
+f)	Karayollarının stratejik ulaşım analizlerinin yapılması </br>
+g)	Trafik düzenleme işlemleri </br>
+h)	İki nokta arasında araçların ulaşım süresinin belirlenmesi, bilgi panosuna aktarılması </br>
+i)	Akıllı trafik sistemlerinin kurulması </br>
+j)	Otopark kontrolü, yoğunluk ölçümleri </br>
+k)	Kayıtlı olan ve ya geçiş yetkisi bulunan araçlar için otomatik bariyer devreye girmesi ya da yasaklı, izinsiz araçların geçmeye çalışma durumunda alarmın devreye girmesi </br>
 
 **3.	Kullanılan Yöntemler**
 
