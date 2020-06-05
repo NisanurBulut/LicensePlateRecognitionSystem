@@ -1,25 +1,39 @@
 # Plaka Tanima Sistemi
 Araç Fotoğraflarından plaka tanıma işlemi yapan masaüstü uygulamadır.
 
- 
-
 İçindekiler
 1.	Plaka Tanıma Yazılımı Nedir
+
 2.	Plaka Tanıma Yazılımının Hedefleri
+
 3.	Kullanılan Yöntemler
+
 3.1	Gri Seviye İndirgeme
+
 3.2	Median Filtreleme
+
 3.3	Sobel Filtreleme
+
 3.4	Otsu Algoritması
+
 4.	Morfolojik İşlemler
+
 4.1	Aşındırma İşlemi
+
 4.2	Genişletme İşlemi
+
 4.3	Gürültü Yok Etme
+
 4.4	Opening/Closing İşlemi
-5.	Aforge Kütüphanesi ve Damla Filtreleme İşlemi   
+
+5.	Aforge Kütüphanesi ve Damla Filtreleme İşlemi  
+
 6.	Filtre Uygulama İşlemlerinin Özeti
+
 7.	Plaka bölgesinin belirlenmesi
+
 8.Özet
+
 
 
 
