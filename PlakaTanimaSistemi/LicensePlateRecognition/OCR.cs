@@ -21,7 +21,7 @@ namespace akıllıgecissistemleri
     public partial class OCR : Form
     {
         public OCR ocr1;
-        public Form1 frm1;
+        public MainForm frm1;
         
 
         #region Initialize
@@ -414,7 +414,7 @@ namespace akıllıgecissistemleri
         public void form(Bitmap bmp, String isim)
         {
 
-            Form1 frmfrm = new Form1();
+            MainForm frmfrm = new MainForm();
             frmfrm.Name = isim;
             frmfrm.Text = isim;
             frmfrm.setImage(bmp);
