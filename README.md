@@ -1,5 +1,5 @@
 ## Yıldız Ver! :star:
-Probleminizin çzümünü öğrenmek veya çözümü başlatmak için bu projeyi beğendiyseniz veya kullanıyorsanız, lütfen ona bir yıldız verin. Teşekkürler!
+Probleminizin çözümünü öğrenmek veya çözümü başlatmak için bu projeyi beğendiyseniz veya kullanıyorsanız, lütfen ona bir yıldız verin. Teşekkürler!
 <hr>
 
 # Plaka Tanıma Sistemi
