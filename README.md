@@ -1,8 +1,8 @@
-## Give a Star! :star:
-If you like or are using this project to learn or start your solution, please give it a star. Thanks!
+## Yıldız Ver! :star:
+Probleminizin çzümünü öğrenmek veya çözümü başlatmak için bu projeyi beğendiyseniz veya kullanıyorsanız, lütfen ona bir yıldız verin. Teşekkürler!
 <hr>
 
-# Plaka Tanima Sistemi
+# Plaka Tanıma Sistemi
 
 Araç Fotoğraflarından plaka tanıma işlemi yapan masaüstü uygulamadır.
 
