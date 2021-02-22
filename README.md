@@ -1,3 +1,6 @@
+## Give a Star! :star:
+If you like or are using this project to learn or start your solution, please give it a star. Thanks!
+<hr>
 # Plaka Tanima Sistemi
 Araç Fotoğraflarından plaka tanıma işlemi yapan masaüstü uygulamadır.
 
