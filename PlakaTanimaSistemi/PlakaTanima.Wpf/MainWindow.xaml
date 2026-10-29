@@ -196,12 +196,9 @@
             </Grid.ColumnDefinitions>
 
             <StackPanel Orientation="Horizontal">
-                <Border Width="46" Height="46" CornerRadius="12" Background="{StaticResource BrandGradient}" VerticalAlignment="Center">
-                    <Border Margin="6" CornerRadius="5" BorderBrush="White" BorderThickness="2">
-                        <TextBlock Text="34" FontWeight="ExtraBold" FontSize="17" Foreground="White"
-                                   HorizontalAlignment="Center" VerticalAlignment="Center" />
-                    </Border>
-                </Border>
+                <Image Source="Assets/logo.png" Width="46" Height="46" VerticalAlignment="Center"
+                       RenderOptions.BitmapScalingMode="HighQuality" />
+
                 <StackPanel Margin="14,0,0,0" VerticalAlignment="Center">
                     <TextBlock Text="Plaka Tanıma Sistemi" FontSize="22" FontWeight="Bold" />
                     <TextBlock Style="{StaticResource MutedText}" Text="Araç fotoğrafından plaka bölgesini adım adım bulur" />

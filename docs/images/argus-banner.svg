@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 150" width="880" height="150" role="img"
+     aria-label="Argus Plate Reader: Find the plate. Read it. See every step.">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0B1B3A"/><stop offset="0.55" stop-color="#1B2C70"/><stop offset="1" stop-color="#5B45D8"/>
+    </linearGradient>
+    <linearGradient id="line" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#00B4D8"/><stop offset="1" stop-color="#7B61FF"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#00B4D8" stop-opacity="0.45"/><stop offset="1" stop-color="#00B4D8" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="880" height="150" rx="18" fill="url(#bg)"/>
+  <circle cx="730" cy="75" r="120" fill="url(#glow)"/>
+  <rect x="2" y="2" width="876" height="146" rx="16" fill="none" stroke="url(#line)" stroke-width="2"/>
+
+  <!-- logo (sol) -->
+  <g transform="translate(22 13) scale(0.48)">
+    <defs>
+      <linearGradient id="b-bg" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#00B4D8"/><stop offset="1" stop-color="#7B61FF"/>
+      </linearGradient>
+      <clipPath id="b-plate"><rect x="90" y="114" width="76" height="28" rx="5"/></clipPath>
+    </defs>
+    <rect width="256" height="256" rx="56" fill="url(#b-bg)"/>
+    <path d="M24 128 C93.33 56 162.67 56 232 128 C162.67 200 93.33 200 24 128 Z" fill="#FFFFFF"/>
+    <circle cx="128" cy="128" r="50" fill="#0F172A"/>
+    <circle cx="128" cy="128" r="43" fill="none" stroke="#00B4D8" stroke-width="4.5"/>
+    <rect x="90" y="114" width="76" height="28" rx="5" fill="#FFFFFF"/>
+    <rect x="90" y="114" width="10" height="28" fill="#1D4ED8" clip-path="url(#b-plate)"/>
+    <text x="133" y="131.4" text-anchor="middle" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.5" font-weight="700" fill="#0F172A" textLength="56" lengthAdjust="spacingAndGlyphs">80 ABC 91052</text>
+    <g fill="none" stroke="#FACC15" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M84 118 V108 H94"/>
+      <path d="M162 108 H172 V118"/>
+      <path d="M172 138 V148 H162"/>
+      <path d="M94 148 H84 V138"/>
+    </g>
+    <circle cx="154" cy="92" r="5" fill="#FFFFFF" opacity="0.9"/>
+  </g>
+
+  <!-- ad ve slogan (logonun yanÄ±nda) -->
+  <text x="168" y="82" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="50" font-weight="800" fill="#FFFFFF" textLength="520" lengthAdjust="spacingAndGlyphs">Argus Plate Reader</text>
+  <text x="170" y="118" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="20" fill="#CFE8FF" opacity="0.95">Find the plate. Read it. See every step.</text>
+
+  <!-- Ã¼Ã§ kÃ¼Ã§Ã¼k plaka (saÄŸ) -->
+    <g transform="translate(726 22)">
+      <rect width="84" height="34" rx="6" fill="#FFFFFF"/>
+      <rect width="14" height="34" rx="6" fill="#1D4ED8"/><rect x="8" width="6" height="34" fill="#1D4ED8"/>
+      <rect x="24" y="10" width="14" height="14" rx="2" fill="#0F172A"/><rect x="42" y="10" width="14" height="14" rx="2" fill="#0F172A"/><rect x="60" y="10" width="14" height="14" rx="2" fill="#0F172A"/>
+      <g fill="none" stroke="#FACC15" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M-6 3 V-6 H3"/><path d="M81 -6 H90 V3"/>
+        <path d="M90 31 V40 H81"/><path d="M3 40 H-6 V31"/>
+      </g>
+    </g>
+    <g transform="translate(770 58)">
+      <rect width="84" height="34" rx="6" fill="#FFFFFF"/>
+      <rect width="14" height="34" rx="6" fill="#1D4ED8"/><rect x="8" width="6" height="34" fill="#1D4ED8"/>
+      <rect x="24" y="10" width="14" height="14" rx="2" fill="#0F172A"/><rect x="42" y="10" width="14" height="14" rx="2" fill="#0F172A"/><rect x="60" y="10" width="14" height="14" rx="2" fill="#0F172A"/>
+      <g fill="none" stroke="#FACC15" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M-6 3 V-6 H3"/><path d="M81 -6 H90 V3"/>
+        <path d="M90 31 V40 H81"/><path d="M3 40 H-6 V31"/>
+      </g>
+    </g>
+    <g transform="translate(714 94)">
+      <rect width="84" height="34" rx="6" fill="#FFFFFF"/>
+      <rect width="14" height="34" rx="6" fill="#1D4ED8"/><rect x="8" width="6" height="34" fill="#1D4ED8"/>
+      <rect x="24" y="10" width="14" height="14" rx="2" fill="#0F172A"/><rect x="42" y="10" width="14" height="14" rx="2" fill="#0F172A"/><rect x="60" y="10" width="14" height="14" rx="2" fill="#0F172A"/>
+      <g fill="none" stroke="#FACC15" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M-6 3 V-6 H3"/><path d="M81 -6 H90 V3"/>
+        <path d="M90 31 V40 H81"/><path d="M3 40 H-6 V31"/>
+      </g>
+    </g>
+</svg>
