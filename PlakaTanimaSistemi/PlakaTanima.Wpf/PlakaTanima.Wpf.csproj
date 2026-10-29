@@ -8,7 +8,14 @@
     <LangVersion>9.0</LangVersion>
     <RootNamespace>PlakaTanima.Wpf</RootNamespace>
     <AssemblyName>PlakaTanima</AssemblyName>
+    <!-- Dosya gezgini, masaüstü kısayolu ve görev çubuğu için exe ikonu. -->
+    <ApplicationIcon>Assets\app.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Pencere (başlık çubuğu / Alt+Tab) ikonu için pakete gömülür. -->
+    <Resource Include="Assets\app.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\PlakaTanima.Core\PlakaTanima.Core.csproj" />
