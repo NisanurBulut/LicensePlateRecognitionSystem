@@ -1,0 +1,34 @@
+name: Build
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+# Aynı dal için eski çalışmayı iptal et, yenisi sürsün.
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    # WPF ve net48 yalnızca Windows'ta derlenir.
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Derle
+        run: dotnet build PlakaTanimaSistemi/PlakaTanima.sln --configuration Release --nologo
+
+      # OCR dil verisi (tessdata\eng.traineddata) depoya girmediği için çıktıda yoktur;
+      # uygulama bu durumda plakayı bulur ama karakterleri okumaz.
+      - name: Uygulama çıktısını yükle
+        uses: actions/upload-artifact@v4
+        with:
+          name: PlakaTanima-Release
+          path: PlakaTanimaSistemi/PlakaTanima.Wpf/bin/Release/net48/
+          retention-days: 7
