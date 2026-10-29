@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net48</TargetFramework>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseWPF>true</UseWPF>
+    <LangVersion>9.0</LangVersion>
+    <RootNamespace>PlakaTanima.Wpf</RootNamespace>
+    <AssemblyName>PlakaTanima</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PlakaTanima.Core\PlakaTanima.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Örnek görseller: çıktı klasöründe Samples\ altına kopyalanır. -->
+    <Content Include="..\images\*.jpg" Link="Samples\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- OCR dil verisi (repoya eklenmez, bkz. tessdata\README.txt). -->
+    <Content Include="tessdata\*.traineddata" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+</Project>
