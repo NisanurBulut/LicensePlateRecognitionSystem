@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-label="Argus Plate Reader logo">
+    <defs>
+      <linearGradient id="l-bg" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#00B4D8"/><stop offset="1" stop-color="#7B61FF"/>
+      </linearGradient>
+      <clipPath id="l-plate"><rect x="90" y="114" width="76" height="28" rx="5"/></clipPath>
+    </defs>
+    <rect width="256" height="256" rx="56" fill="url(#l-bg)"/>
+    <path d="M24 128 C93.33 56 162.67 56 232 128 C162.67 200 93.33 200 24 128 Z" fill="#FFFFFF"/>
+    <circle cx="128" cy="128" r="50" fill="#0F172A"/>
+    <circle cx="128" cy="128" r="43" fill="none" stroke="#00B4D8" stroke-width="4.5"/>
+    <rect x="90" y="114" width="76" height="28" rx="5" fill="#FFFFFF"/>
+    <rect x="90" y="114" width="10" height="28" fill="#1D4ED8" clip-path="url(#l-plate)"/>
+    <text x="133" y="131.4" text-anchor="middle" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="9.5" font-weight="700" fill="#0F172A" textLength="56" lengthAdjust="spacingAndGlyphs">80 ABC 91052</text>
+    <g fill="none" stroke="#FACC15" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M84 118 V108 H94"/>
+      <path d="M162 108 H172 V118"/>
+      <path d="M172 138 V148 H162"/>
+      <path d="M94 148 H84 V138"/>
+    </g>
+    <circle cx="154" cy="92" r="5" fill="#FFFFFF" opacity="0.9"/>
+</svg>

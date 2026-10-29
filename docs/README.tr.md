@@ -1,4 +1,20 @@
-> 🇬🇧 [English README](README.md) · Bu dosya projenin Türkçe açıklamasıdır.
+<p align="center">
+  <img src="images/argus-banner.svg" alt="Argus Plate Reader" width="880">
+</p>
+
+<p align="center">🇬🇧 <a href="../README.md">English</a> · 🇹🇷 Türkçe</p>
+
+<p align="center">
+  <b>👁️ Araç fotoğrafında plakayı bulan ve okuyan WPF uygulaması.</b><br>
+  Görüntü işlemenin her adımını tek tek izleyebilirsiniz.
+</p>
+
+<p align="center">
+  <img src="images/argus-demo.gif" alt="Argus Plate Reader: örnek fotoğraf, işlem hattı ve okunan plaka" width="880">
+</p>
+
+> Bu dosya projenin Türkçe açıklamasıdır; aşağıda ilk (WinForms) sürümün ayrıntılı anlatımı da yer alır.
+> Güncel proje yapısı ve çalıştırma adımları için [İngilizce README](../README.md) dosyasına bakın.
 
 ## Yıldız Ver! :star:
 Probleminizin çözümünü öğrenmek veya çözümü başlatmak için bu projeyi beğendiyseniz veya kullanıyorsanız, lütfen ona bir yıldız verin. Teşekkürler!

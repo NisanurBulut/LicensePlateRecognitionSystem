@@ -15,6 +15,7 @@
   <ItemGroup>
     <!-- Pencere (başlık çubuğu / Alt+Tab) ikonu için pakete gömülür. -->
     <Resource Include="Assets\app.ico" />
+    <Resource Include="Assets\logo.png" />
   </ItemGroup>
 
   <ItemGroup>
