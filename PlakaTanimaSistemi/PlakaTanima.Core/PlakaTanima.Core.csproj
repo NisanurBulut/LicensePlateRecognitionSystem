@@ -9,11 +9,7 @@
     <AssemblyName>PlakaTanima.Core</AssemblyName>
   </PropertyGroup>
 
-  <ItemGroup>
-    <!-- Görüntü işleme sınıfları eski WinForms projesiyle paylaşılır, kopyalanmaz. -->
-    <Compile Include="..\LicensePlateRecognition\ExtBitmap.cs" Link="Imaging\ExtBitmap.cs" />
-    <Compile Include="..\LicensePlateRecognition\Matrix.cs" Link="Imaging\Matrix.cs" />
-  </ItemGroup>
+  <!-- Imaging\ExtBitmap.cs ve Matrix.cs bu projeye aittir; eski WinForms projesi (legacy\) buraya bağlanır. -->
 
   <ItemGroup>
     <Reference Include="System.Drawing" />
