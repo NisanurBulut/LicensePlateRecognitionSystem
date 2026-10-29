@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>9.0</LangVersion>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <RootNamespace>PlakaTanima.Core</RootNamespace>
+    <AssemblyName>PlakaTanima.Core</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Görüntü işleme sınıfları eski WinForms projesiyle paylaşılır, kopyalanmaz. -->
+    <Compile Include="..\LicensePlateRecognition\ExtBitmap.cs" Link="Imaging\ExtBitmap.cs" />
+    <Compile Include="..\LicensePlateRecognition\Matrix.cs" Link="Imaging\Matrix.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System.Drawing" />
+    <Reference Include="AForge"><HintPath>..\references\AForge.dll</HintPath></Reference>
+    <Reference Include="AForge.Imaging"><HintPath>..\references\AForge.Imaging.dll</HintPath></Reference>
+    <Reference Include="AForge.Math"><HintPath>..\references\AForge.Math.dll</HintPath></Reference>
+    <!-- Karma kipli (C++/CLI), 32 bit, Tesseract 3.01. -->
+    <Reference Include="tesseractengine3"><HintPath>..\references\tesseractengine3.dll</HintPath></Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Yerel (32 bit) Otsu kütüphanesi: referans veren projenin çıktısına da kopyalanır. -->
+    <None Include="..\references\OtsuEsikleme.dll" Link="OtsuEsikleme.dll" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+</Project>

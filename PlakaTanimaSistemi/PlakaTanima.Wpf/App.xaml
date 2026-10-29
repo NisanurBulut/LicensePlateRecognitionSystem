@@ -1,0 +1,106 @@
+<Application x:Class="PlakaTanima.Wpf.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+
+        <!-- Verilen palet -->
+        <SolidColorBrush x:Key="BgBrush" Color="#F4F7FB" />          <!-- Arka plan -->
+        <SolidColorBrush x:Key="SurfaceBrush" Color="#FFFFFF" />     <!-- Kartlar -->
+        <SolidColorBrush x:Key="PrimaryBrush" Color="#00B4D8" />     <!-- Ana renk -->
+        <SolidColorBrush x:Key="AccentBrush" Color="#7B61FF" />      <!-- Accent -->
+        <SolidColorBrush x:Key="SuccessBrush" Color="#22C55E" />     <!-- Başarılı tanıma -->
+        <SolidColorBrush x:Key="WarnBrush" Color="#FACC15" />        <!-- Uyarı -->
+        <SolidColorBrush x:Key="ErrorBrush" Color="#EF4444" />       <!-- Hata -->
+
+        <!-- Paletten türetilen yardımcı tonlar: nötrler, hafif zeminler, okunaklı koyu metin renkleri -->
+        <SolidColorBrush x:Key="TextBrush" Color="#0F172A" />
+        <SolidColorBrush x:Key="MutedBrush" Color="#64748B" />
+        <SolidColorBrush x:Key="BorderBrushSoft" Color="#E2E8F0" />
+        <SolidColorBrush x:Key="SurfaceHiBrush" Color="#EEF3F9" />
+        <SolidColorBrush x:Key="PrimaryTintBrush" Color="#1F00B4D8" />
+        <SolidColorBrush x:Key="SuccessTintBrush" Color="#2622C55E" />
+        <SolidColorBrush x:Key="WarnTintBrush" Color="#40FACC15" />
+        <SolidColorBrush x:Key="ErrorTintBrush" Color="#26EF4444" />
+        <SolidColorBrush x:Key="PrimaryTextBrush" Color="#0E7490" />
+        <SolidColorBrush x:Key="SuccessTextBrush" Color="#15803D" />
+        <SolidColorBrush x:Key="WarnTextBrush" Color="#854D0E" />
+        <SolidColorBrush x:Key="ErrorTextBrush" Color="#B91C1C" />
+
+        <LinearGradientBrush x:Key="BrandGradient" StartPoint="0,0" EndPoint="1,0">
+            <GradientStop Color="#00B4D8" Offset="0" />
+            <GradientStop Color="#7B61FF" Offset="1" />
+        </LinearGradientBrush>
+
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource TextBrush}" />
+            <Setter Property="FontFamily" Value="Segoe UI" />
+        </Style>
+
+        <Style x:Key="MutedText" TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
+            <Setter Property="Foreground" Value="{StaticResource MutedBrush}" />
+            <Setter Property="FontSize" Value="12" />
+        </Style>
+
+        <Style x:Key="Card" TargetType="Border">
+            <Setter Property="Background" Value="{StaticResource SurfaceBrush}" />
+            <Setter Property="BorderBrush" Value="{StaticResource BorderBrushSoft}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="CornerRadius" Value="14" />
+        </Style>
+
+        <!-- Düğmeler -->
+        <Style x:Key="GhostButton" TargetType="Button">
+            <Setter Property="Foreground" Value="{StaticResource TextBrush}" />
+            <Setter Property="FontFamily" Value="Segoe UI" />
+            <Setter Property="FontSize" Value="13" />
+            <Setter Property="Padding" Value="14,9" />
+            <Setter Property="Margin" Value="0,0,8,0" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="Root" Background="{StaticResource SurfaceBrush}" BorderBrush="{StaticResource BorderBrushSoft}"
+                                BorderThickness="1" CornerRadius="10" Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Root" Property="Background" Value="#F0FBFE" />
+                                <Setter TargetName="Root" Property="BorderBrush" Value="{StaticResource PrimaryBrush}" />
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="Root" Property="Opacity" Value="0.45" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="PrimaryButton" TargetType="Button" BasedOn="{StaticResource GhostButton}">
+            <!-- #00B4D8 üzerinde beyaz metin okunaksız kalıyor (≈2,6:1); koyu lacivert kullanılıyor. -->
+            <Setter Property="Foreground" Value="#0F172A" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Margin" Value="0" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="Root" Background="{StaticResource PrimaryBrush}" CornerRadius="10" Padding="18,9">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" TextElement.Foreground="{TemplateBinding Foreground}" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Root" Property="Background" Value="#0098B8" />
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="Root" Property="Opacity" Value="0.4" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </Application.Resources>
+</Application>
