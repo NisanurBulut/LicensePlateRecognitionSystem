@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:PlakaTanima.Wpf"
         xmlns:vm="clr-namespace:PlakaTanima.Wpf.ViewModels"
-        Title="Plaka Tanıma Sistemi" Width="1200" Height="840" MinWidth="960" MinHeight="740"
+        Title="Plaka Tanıma Sistemi" Icon="Assets/app.ico" Width="1200" Height="840" MinWidth="960" MinHeight="740"
         Background="{StaticResource BgBrush}" AllowDrop="True" WindowStartupLocation="CenterScreen"
         UseLayoutRounding="True" TextOptions.TextFormattingMode="Display">
 

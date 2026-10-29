@@ -1,224 +1,256 @@
-## Yıldız Ver! :star:
-Probleminizin çözümünü öğrenmek veya çözümü başlatmak için bu projeyi beğendiyseniz veya kullanıyorsanız, lütfen ona bir yıldız verin. Teşekkürler!
-<hr>
+<p align="center">
+  <img src="docs/icon.png" alt="Plate Recognition System icon" width="110">
+</p>
 
-# Plaka Tanıma Sistemi
+<h1 align="center">Plate Recognition System</h1>
 
-Araç Fotoğraflarından plaka tanıma işlemi yapan masaüstü uygulamadır.
+<p align="center">
+  A Windows desktop app that finds the licence plate in a car photo and reads it.<br>
+  You can watch every step of the image processing, one by one.
+</p>
 
-**Proje yapısı**
+<p align="center">
+  🇹🇷 <a href="README.tr.md">Türkçe README</a> ·
+  📄 <a href="PlateRecognitionSystemReport.pdf">Project report (PDF)</a>
+</p>
 
-| Klasör | Açıklama |
+![Demo of the app](docs/demo.gif)
+
+## What does it do?
+
+1. You choose a photo of the front of a car (or drag it into the window).
+2. The app cleans the picture and looks for a shape that looks like a plate.
+3. It crops the plate and reads the letters and numbers (OCR).
+4. It checks that the text matches a Turkish plate, for example `35 AF 8952`.
+
+## Features
+
+- **Step-by-step view.** 13 small cards show what the picture looks like after each step. Click a card to see it big.
+- **Plate on the photo.** A green box shows where the plate is. The cropped plate and the text are shown next to it.
+- **Numbers.** Position, size, shape ratio, time and number of regions found.
+- **Clear messages.** Different colours for "plate found", "plate not found", "text looks wrong" and "error".
+- **Drag and drop.** Or use the buttons: two sample photos are included.
+- **Open from the command line.** `PlakaTanima.exe photo.jpg`
+
+## Project structure
+
+| Folder | What is inside |
 |---|---|
-| `PlakaTanimaSistemi/PlakaTanima.Wpf` | **Varsayılan uygulama** (WPF). Görseli seçin ya da sürükleyin, işlem hattını adım adım izleyin. |
-| `PlakaTanimaSistemi/PlakaTanima.Core` | Görüntü işleme ve plaka bulma kütüphanesi (WPF uygulamasının kullandığı çekirdek). |
-| `PlakaTanimaSistemi/legacy/LicensePlateRecognition` | Eski WinForms uygulaması. Yalnızca referans olarak saklanır, geliştirilmez. |
-
-Çalıştırmak için `PlakaTanimaSistemi/PlakaTanima.sln` dosyasını açın; başlangıç projesi `PlakaTanima.Wpf`'tir.
-Karakter okuma (OCR) için `PlakaTanimaSistemi/PlakaTanima.Wpf/tessdata/README.txt` içindeki dil verisini koyun; yoksa uygulama plakayı bulur ama karakterleri okumaz.
-
-**1.	Plaka Tanıma Yazılımı Nedir?**
-
-Plaka Tanıma Sistemi kameralardan elde edilen araç görüntüsünün üzerinde plaka bölgesi tespit edilerek ve ayrıştırılarak, plaka üzerinde bulunan karakterlerin optik karakter tanıma (Görüntü İşleme) yöntemleri ile okunması işlemidir. Dijital görüntülerin alınması sayesinde plaka okumasının gerçekleştiriliyor olması sayesinde, yazılım tabanlı olarak çalışırlar. Projeye göre değişik uygulamaları olup, uygulamaya özel algoritma ve donanım yapısının bir araya getirilmesi ile oluşturulan bir sistemdir.
-
-**2.	Plaka Tanıma Yazılımının Hedefleri**
-
-Araçların plaka bilgisinin, görüntülerden elde edilmesiyle aslında aracın kimlik bilgisi elde edilir. Bu sayede bir araca dair aşağıda belirtilen durumlar takip edilebilir.
-
-a)	Otoyol, köprü ve gişelerden geçen araçların çalıntı veya ihlal bilgilerine ulaşabilmek ve analizlerini yapabilmek </br>
-b)	Otopark, site, nizamiye ve buna benzer kontrollü geçiş noktalarının giriş ve çıkışlarında insan gücünü hafifletmek, kolay, hızlı, güvenli giriş ve çıkışlarını sağlamak </br>
-c)	Kantar, araç muayene istasyonları ve buna benzer yerlerde plaka bilgilerine otomatik olarak ulaşabilmek </br>
-d)	Şehir giriş ve çıkışlarının kontrol altında tutulması, şehir güvenliğinin sağlanması </br>
-e)	Karayollarının araç yoğunluk ölçümlerinin yapılması </br>
-f)	Karayollarının stratejik ulaşım analizlerinin yapılması </br>
-g)	Trafik düzenleme işlemleri </br>
-h)	İki nokta arasında araçların ulaşım süresinin belirlenmesi, bilgi panosuna aktarılması </br>
-i)	Akıllı trafik sistemlerinin kurulması </br>
-j)	Otopark kontrolü, yoğunluk ölçümleri </br>
-k)	Kayıtlı olan ve ya geçiş yetkisi bulunan araçlar için otomatik bariyer devreye girmesi ya da yasaklı, izinsiz araçların geçmeye çalışma durumunda alarmın devreye girmesi </br>
-
-**3.	Kullanılan Yöntemler**
-
-Aracın plaka bilgisinin elde edilebilmesi için plakanın koordinat bilgisi bilinmelidir.Kordinatların yer tespitinin ardından karakter tanıma işlemi yapılır.  Genel anlamda süreç adım adım ifade edilecek olursa aşağıdaki gibi listelenir.
-
-a)	Kamera görüntüsü üzerinden plaka yerinin tespit edilmesi ve ayrıştırılması
-b)	Plakanın sonraki algoritmalara uygun şekilde yeniden konumlandırılması ve boyutlandırılması
-c)	Parlaklık, zıtlık gibi görüntü özelliklerinin normalizasyonu
-d)	Karakter ayırma ile görüntüden karakterlerin çıkarılması
-e)	Optik karakter tanıma
-f)	Ülkeye özgü söz dizimi ve geometrik kontroller
-
-**3.1	Gri Seviye İndirgeme**
-
-Uygulama sürecinde görüntü işleme hızını artırabilmek için RGB formattaki görüntü, ortalama değer yöntemiyle gri seviyeye indirgenmiştir. Byte veri tipi dönüşümü yapılır. 
-
-	Resim üzerinde yapılan her işlemin tamamlanma süreci, progressbar ile gösterilir.
-![Resim 1- Gri Seviye İndirgeme C# Kod Bloğu](https://github.com/NisanurBulut/PlakaTanimaSistemi/blob/master/PlakaTanimaSistemi/ProjeTanitimImages/1.png)
- 
-![Resim2-Gri Seviye İndirgeme Sonucu](https://github.com/NisanurBulut/PlakaTanimaSistemi/blob/master/PlakaTanimaSistemi/ProjeTanitimImages/2.jpg)
- 
-**3.2	Median Filtreleme**
-
-Gri seviyeye indirgenmiş olan görüntü üzerinde keskin geçişleri en az seviyeye indirmek için median filtre uygulanacaktır. Median filtre 3x3, 5x5, 7x7 gibi tek sayı boyutlu filtrelerden oluşur. Görüntüyü yumuşatır. Kullanılan çekirdek şablonun yani filtrenin boyutu arttıkça yumuşama yani bulanıklaşma da artar.
-Median filtrenin tercih edilme sebebi ortalama alıcı filtreyle kıyaslandığında daha sağlıklı sonuçlar vermesidir. Görüntü üzerindeki detay kaybı daha az olur. Bir pikselin değerini değiştirirken komşularının ve kendisinin ortalamasını almak yerine komşuları içinde ortanca değer ile değişim yapar.
-Temsil yeteneği uzak bir piksel sıralanan dizinin uçlarında kalacağından (hiç bir zaman ortada bulunmayacaktır) oradaki komşuların genel temsilini etkilemesi imkansız hale gelmiş olur.
-Komşu piksellerin birinin değeri olması gerektiği için, kenar boyunca hareket ettiğinde gerçekçi olmayan piksel değerleri oluşturmaz. Bu nedenle, medyan filtre, keskin kenarları ortalama filtreden daha iyi korur
-Filtreleme işlemleri ExtBitmap C# sınıfı içerisinde tanımlanmıştır. 3x3 Matrix boyutu kullanılmıştır
-
-![Resim3-ExtBitmap sınıfı genel görünümü](https://github.com/NisanurBulut/PlakaTanimaSistemi/blob/master/PlakaTanimaSistemi/ProjeTanitimImages/3.png)
-
-![Resim4- Median filtrenin uygulaması](https://github.com/NisanurBulut/PlakaTanimaSistemi/blob/master/PlakaTanimaSistemi/ProjeTanitimImages/4.jpg)
-
-
-**3.3	Sobel Filtreleme**
-
-Median filtre uygulanarak gürültüsü azaltılmış, keskin geçişler azaltılacaktır.  Görüntü üzerinde kenar bulma işlemi için sobel filtresi kullanılacaktır. Dikey, yatay ve köşegen şeklindeki kenarları bulmak için kullanılacaktır.  
-![](https://github.com/NisanurBulut/PlakaTanimaSistemi/blob/master/PlakaTanimaSistemi/ProjeTanitimImages/sobel3.JPG)
-
-![](https://github.com/NisanurBulut/PlakaTanimaSistemi/blob/master/PlakaTanimaSistemi/ProjeTanitimImages/sobel.JPG)
-
-
-![Resim5-Sobel filtrelerinin uygulama içerisinde gösterimi](https://github.com/NisanurBulut/PlakaTanimaSistemi/blob/master/PlakaTanimaSistemi/ProjeTanitimImages/5.png)	 
-
-![Resim5-Sobel filtrelerisinin uygulaması](https://github.com/NisanurBulut/PlakaTanimaSistemi/blob/master/PlakaTanimaSistemi/ProjeTanitimImages/6.png)	 
- 
-
-
-
-**3.4	Otsu Algoritması**
-
-Gri seviyeli görüntünün ikili seviyeye dönüştürülebilmesi için otsu algoritması kullanılacaktır. İkili seviyeye dönüştürmek için bir eşik değeri belirlenir. Bu eşik değerinin altında kalan pikseller siyaha dönüştürülürken üstünde kalan pikseller beyaza dönüştürülür. Ancak her görüntü aynı niteliklere sahip değildir dolayısıyla her görüntünün kendine has eşik değerinin hesaplanmasına ihtiyaç duyulur. Uygulamanın bu adımında, eşik değerinin tespit edilmesi için Otsu Algoritması kullanılacaktır.
-Otsu Algortiması eşik değer yöntemi mümkün olan bütün eşik değerler için(255'e kadar yani) bütün eşik değerler için sınıf-içi varyans denilen bir değer hesaplar ve bu değerin en düşük olduğu indeksi döndürür. Sınıf-içi varyansın minimize edilmesi derken kast edilen sınıflar önyüz(foreground) ve arkayüz(background) pikselleridir. O an incelenen renk değerinden büyük olan piksellere önyüz pikselleri; küçük olanlar arkayüz pikselleri denir. Bir renk için histogramda(buckets) o renkten büyük olan renklerin([i:]) frekanslarının  toplamının(np.sum) toplam piksel sayısına(image_size) bölümü bize önyüz renklerinin ağırlığını verir. Bu değerin 1 sayısından çıkarılmasıyla arkayüz ağırlığı elde edilir.
-Varyans hesabı yapabilmek için önce sınıfların ortalama değerleri bulunmalıdır. Bunun için her sınıf için o sınıfa üye olan renklerin kendi değerleri ile o renkteki piksel sayısı çarpılır ve sonuç, kümeye ait toplam piksel sayısına bölünür.
-Otsu algoritmasının kullanımı için .dll dosyasından yararlanılmıştır. Bu method birebir proje içerisinde kodlanmamıştır.
-
-![Resim6-Otsu algoritması için  dll dosyası çağrısı.](https://github.com/NisanurBulut/PlakaTanimaSistemi/blob/master/PlakaTanimaSistemi/ProjeTanitimImages/6.jpg)
-
-![Resim7-otsu algoritması çalıştırılması](https://github.com/NisanurBulut/PlakaTanimaSistemi/blob/master/PlakaTanimaSistemi/ProjeTanitimImages/otsu2.jpg)
-
-
- ![Resim8-Otsu algoritması uygulaması](https://github.com/NisanurBulut/PlakaTanimaSistemi/blob/master/PlakaTanimaSistemi/ProjeTanitimImages/otsu3.jpg)
-
-
-**4.	Morfolojik İşlemler**
-
-Görüntü üzerinde iskelet, imgedeki sınırlar gibi yapıların tanımlanması ve bilgi çıkarımı yapılması ve gürültü giderimi, bölütleme için matematiksel morfoloji işlemlerine ihtiyaç vardır. Morfolojik görüntü işleme şekillerin biçimsel yapısı ile ilgilenerek nesneleri ayırt etmemize ve gruplayabilmemize olanak sağlar. Yöntem gri seviye görüntüler üzerinde de çalışsa da genellikle siyah-beyaz (ikili) görüntüler üzerinde kullanılır. Morfolojik filtreler genelde iki temel işlemden türetilmiştir. Bunlar erosion (aşındırma) ve dilation (genişletme) işlemleridir. Aşındırma ikili bir görüntüde bulunan nesnelerin boyutunu seçilen yapısal elemente bağlı olarak küçültürken, genişletme nesnenin alanını artırır.
-
-	Morfolojik işlemler enum olarak kodlama içerisinde yer almıştır.
- ![](https://github.com/NisanurBulut/PlakaTanimaSistemi/blob/master/PlakaTanimaSistemi/ProjeTanitimImages/Morfo1.jpg)
-
-	Uygulama için otsu görüntü üzerinde morfolojik işlemler olan yayma ve aşındırma işlemleri yapılacaktır.
- ![](https://github.com/NisanurBulut/PlakaTanimaSistemi/blob/master/PlakaTanimaSistemi/ProjeTanitimImages/Morfo2.jpg)
-
-![ Resim9-Dilation ve Erosion İşlemlerinin Extmap sınıfından çağrılması](https://github.com/NisanurBulut/PlakaTanimaSistemi/blob/master/PlakaTanimaSistemi/ProjeTanitimImages/Morfo3.jpg)
-
-  
-**4.1	Aşındırma İşlemi(Erosion)**
-
-Bu işlem için görüntü üzerinde n boyutlu bir çekirdek gezdirilecektir. Ortadaki n. piksel, resim üzerinde işlem yaptığımız piksele karşılık gelir. Bu n tane piksel resim üzerine konulduktan sonra, piksellerin tamamı beyaz alanla örtüştü ise yani, n tane pikselin hepsinin karşılığı olan alan beyaz ise o zaman üzerinde işlem yapılan piksel beyaz olarak işaretlenir. Eğer bu n tane pikselden herhangi biri siyah bir pikselin üzerine denk geldiyse o zaman ortadaki pikselin değeri siyah yapılır. Dikkat edilirse bu işlem ile siyah bölge genişletilirken, beyaz bölge aşındırılmış olmaktadır.
-
-	Uygulama için birbirine ince gürültülerle bağlanmış nesneleri birbirinden ayırarak gürültü temizleme yapılmak amaçlanmıştır.
- 
-![Resim9-Erozyon işleminin uygulanması](https://github.com/NisanurBulut/PlakaTanimaSistemi/blob/master/PlakaTanimaSistemi/ProjeTanitimImages/aşın1.jpg) 
-
-**4.2	Genişletme İşlemi(Dilation)**
-
-Genişletme işlemi aynı nesnenin bir gürültü ile ince bir şekilde bölünerek ayrı iki nesne gibi görünmesini engellemek için kullanılır. Aslında aşındırma ve genişletme işlemleri birbirinin tersidir. Görüntü üzerindeki alanlarda bu işlemlerden birini uygulandığında komşu diğer alanlar zıttı olan işleme tabi tutulmuş olur. Yani aşındırma uygularken komşu alanda genişletme uygulanmış olur.
-
-	Uygulama için genişletme işlemi aynı nesnenin bir gürültü ile ince bir şekilde bölünerek ayrı iki nesne gibi görünmesini engellemek için kullanılır.
-
-![Resim10-Dilation İşlemi](https://github.com/NisanurBulut/PlakaTanimaSistemi/blob/master/PlakaTanimaSistemi/ProjeTanitimImages/aşın2.jpg) 
-
-**4.3	Opening/Closing İşlemi**
-
-Aşındırma ve genişletme işlemlerinin ardından  sırasıyla opening ve closing işlemleri yapılır. Buradaki amaç detayları ele geçirmektir. Kodlama aşamasında opening ve closing işlemlerinin yapıldığı methodlar Extmap sınıfı içinde tanımlanmıştır.
-
-![Resim11-Opening&Closing işleminin çağrısı](https://github.com/NisanurBulut/PlakaTanimaSistemi/blob/master/PlakaTanimaSistemi/ProjeTanitimImages/open1.jpg) 
- 
-![Resim 12-Closing işlem uygulamasının sonucu](https://github.com/NisanurBulut/PlakaTanimaSistemi/blob/master/PlakaTanimaSistemi/ProjeTanitimImages/open2.jpg) 
- 
-
-
-**4.4	Gürültü Yok etme**
-
-Görüntü üzerinde filtreleme işlemlerinin ve morfolojik işlemlerin yapılmasının ardından kalan gürültüleri temizlemek için Aforge kütüphanesinden yararlanıldı. Görüntü üzerinde ﬁltreleme ve morfolojik işlemlerimizi yaptıktan sonra görüntü üzerinde kalan görültüleri temizlemek için AForge kütüphanesin BlobsFiltering yani damla ﬁltreleme işlemini uygulayarak verilen boyutlar dışında kalan bölgeleri temizledik. 
-
-	Filtre genişliği 70 pixel, yüksekliği 40 pixel den küçük olan gürültüleri yok etmek için kullanılmıştır.
-	Üzerinde işlem yapılan görüntüde kalan noktasal gürültülerden kurtulmak amaçlanır.
-
-![Resim13-Gürültü temizleme kod parçacığı](https://github.com/NisanurBulut/PlakaTanimaSistemi/blob/master/PlakaTanimaSistemi/ProjeTanitimImages/g1.jpg) 
-
-![Resim14-Gürültü temizleme işlem sonucu](https://github.com/NisanurBulut/PlakaTanimaSistemi/blob/master/PlakaTanimaSistemi/ProjeTanitimImages/g2.jpg) 
-
-
-**5.	Aforge Kütüphanesi ve Damla Filtreleme İşlemi**
-
-Aforge kütüphanesi görüntü işleme alanında kullanılan açık kaynak kodlu bir  .NET kütüphanesidir. Görüntü üzerinde manuel olarak ya da otomatik olarak matematik işlemler yapılmasına olanak sağlar. Filtrelemeden sinir ağları hesaplamalarına değin pek çok alanda kolaylıklar sağlar.
-
-	Uygulama içinde, Aforge kütüphanesi yardımıyla gürültü temizleme işlemi için damla filtre metodu kullanılacaktır.
-Damla filtre yardımıyla, verilen boyutlardan küçük olan gürültüler temizlenir. Kütüphane bunun için BlobsFiltering metodunu kullanıma sunar.
-![Resim11-Dilation uygulanan resme damla filtresinin uygulanması](https://github.com/NisanurBulut/PlakaTanimaSistemi/blob/master/PlakaTanimaSistemi/ProjeTanitimImages/d1.jpg) 
-
- ![Resim 12-Damla filtresinin resim üzerindeki etkisi](https://github.com/NisanurBulut/PlakaTanimaSistemi/blob/master/PlakaTanimaSistemi/ProjeTanitimImages/d2.jpg) 
-
-**6.	Filtre Uygulama İşlemlerinin Özeti**
-Aforge kütüphanesinin yardımıyla, otsu algoritması için kullanılan dll dosyasının yardımıyla ve sobel, median filtrelerinin tanımlayıcı olarak kodlanmasıyla ardarda pek çok filtreleme işlemi yapılmıştır. Yapılan işlemler özetle sıralanacak olursa aşağıdaki gibidir. Ardarda pek çok filtreleme işlemi yaparak plaka görüntüsünün elde edilmesine uygun bir taslak hazırlanmaya çalışılmıştır.
-
-**7.	Plaka Bilgisinin Araştırılması**
-Görüntü üzerinde gürültü temizleme ve filtreleme işlemlerinin yapılmasının ardından plaka yerinin araştırılması işlemine geçilir. Bunun için Aforge kütüphanesinden yararlanılır ve plakanın koordinat bilgileri elde edilmeye çalışılacaktır.
-Türkiye’deki araç plakalarının birçoğunun görünümü dikdörtgen şeklindedir. Aforge kütüphanesi yardımıyla elde edilen plaka bölgesinin gerçekten plaka boyutlarına uygun olup olmadığını anlayabilmek için boyut kontrolü yapılmalıdır. Plaka boyutları ön taraf için genellikle 11x52 iken arka taraf için 21x32’dir. Sonuç olarak elde edilen görüntü plaka bilgisi olarak kullanıcıya sunulacaktır.
-
-	Uygulama sürecinde plaka tespiti yalnızca aracın ön tarafındaki plaka için yapılmıştır.
-
-![Resim13-Plaka bölgesinin çizimi](https://github.com/NisanurBulut/PlakaTanimaSistemi/blob/master/PlakaTanimaSistemi/ProjeTanitimImages/p1.jpg) 
-
-![Resim14- Plaka bölgesinin çizilmesi için gerekli kod bloğu](https://github.com/NisanurBulut/PlakaTanimaSistemi/blob/master/PlakaTanimaSistemi/ProjeTanitimImages/p2.jpg) 
- 
-![Resim15-Plaka bölge sınırlarının belirlenmesi için gerekli kod bloğu](https://github.com/NisanurBulut/PlakaTanimaSistemi/blob/master/PlakaTanimaSistemi/ProjeTanitimImages/p3.jpg) 
- 
-![Resim16-Plaka bölgesinin dikdörtgen şekilde gösterimi](https://github.com/NisanurBulut/PlakaTanimaSistemi/blob/master/PlakaTanimaSistemi/ProjeTanitimImages/p5.jpg) 
- 
-
-**8.	Özet**
-Görüntünün gri seviyeye indirgenmesi, yumuşatma işlemi, kenar bulma filtesinin(sobel) kullanımı, aşındırma ve genişletme işlemlerinin yapılmasının ardından Aforge kütüphanesi yardımıyla plaka bölgesinin araştırılması ve belirlenmesi gerçekleştirilmiştir.
-	Proje C# programlama dili kullanılarak masaüstü uygulaması olarak gerçekleştirilmiştir.
-
-Programın Kullanım Adımları
-
-a)	Kullanıcı Dosya seç butonunu kullanarak, plakasını tanımak istediği fotoğrafın fiziksel yolunu programa tanıtır.
-b)	Fotoğrafın yüklenmesinin ardından, plaka tespit butonu tıklanarak plaka tanıma işlemi başlatılır.
-c)	Plaka tanıma işlemi tamamlandığında, kullanıcıya plaka gösterimi yapılır.
- 	 
-Tablo1-Programın çalışma sürecinin gösterilmesi
-
-![Program başlangıç ekranı	Fotoğrafın programa tanıtılması](https://github.com/NisanurBulut/PlakaTanimaSistemi/blob/master/PlakaTanimaSistemi/ProjeTanitimImages/u1.JPG) 
-
-![Plaka tespit aşaması	Plaka tespitinin tamamlanması](https://github.com/NisanurBulut/PlakaTanimaSistemi/blob/master/PlakaTanimaSistemi/ProjeTanitimImages/u1.JPG) 
-
-
-**Filtre işlemlerinin gösterimi**
-![](https://github.com/NisanurBulut/PlakaTanimaSistemi/blob/master/PlakaTanimaSistemi/ProjeTanitimImages/u3.JPG) 
-![](https://github.com/NisanurBulut/PlakaTanimaSistemi/blob/master/PlakaTanimaSistemi/ProjeTanitimImages/u4.JPG) 
-
-Proje Kaynak Kodu: https://github.com/NisanurBulut/PlakaTanimaSistemi
-
-
-Kaynakça
-1.	https://trafik.net.tr/plaka-tanima-sistemi-nedir/
-2.	http://www.hobibilisim.com/pts-nedir/
-3.	http://www.barissamanci.net/Makale/20/goruntu-isleme-teknikleriyle-gercek-zamanli-plaka-tanima-sistemi/
-4.	http://www.aforgenet.com/framework/docs/html/4a83d944-d776-ba2c-9847-3254fe3dbfdd.htm
-5.	https://www.bulentsiyah.com/goruntunun-sinir-egrisini-cikaran-filtreler-matlab/
-6.	https://yavuzbugra.wordpress.com/2011/05/01/goruntu-islemede-filtreleme/
-7.	http://bilgisayarkavramlari.sadievrenseker.com/2007/11/26/ortanca-filitresi-median-filter/
-8.	http://bilgisayarkavramlari.sadievrenseker.com/2008/11/17/aritmetik-ortalama-average-mean/
-9.	http://huseyinatasoy.com/Otsu-Esik-Belirleme-Metodu
-10.	http://embedded.kocaeli.edu.tr/otsu-metodu/
-11.	https://medium.com/@sddkal/python-ile-g%C3%B6r%C3%BCnt%C3%BC-i%CC%87%C5%9Fleme-mean-ve-median-filtreler-1891cdbef632
-12.	http://www.plaka.com.tr/plaka-gorunumu.html
-13.	http://guraysonugur.aku.edu.tr/wp-content/uploads/sites/22/2017/05/G%C3%B6r%C3%BCnt%C3%BC-%C4%B0%C5%9Fleme-Ders-9.1.pdf
-14.	https://slideplayer.biz.tr/slide/10376908/
-15.	http://www.cescript.com/2012/08/morfolojik-goruntu-isleme.html
-
-
-
+| `PlakaTanimaSistemi/PlakaTanima.Wpf` | **The main app** (WPF). Start here. |
+| `PlakaTanimaSistemi/PlakaTanima.Core` | The image processing and plate reading code. No window code. |
+| `PlakaTanimaSistemi/legacy/LicensePlateRecognition` | The old WinForms app. Kept only as a reference. |
+| `PlakaTanimaSistemi/references` | Libraries used by the project (AForge, Tesseract, Otsu). |
+| `PlakaTanimaSistemi/images` | Sample photos. |
+| `docs` | Pictures used in this README. |
+
+## Getting started
+
+You need Windows and Visual Studio with **.NET Framework 4.8** support.
+
+1. Open `PlakaTanimaSistemi/PlakaTanima.sln`.
+2. Make sure `PlakaTanima.Wpf` is the startup project (it is the default).
+3. Press **F5**.
+
+Or build it from a terminal:
+
+```bash
+dotnet build PlakaTanimaSistemi/PlakaTanima.sln --configuration Release
+```
+
+> The project is built for **x86 (32-bit)** because the Otsu and Tesseract libraries are 32-bit.
+
+### Reading the text (OCR)
+
+Finding the plate works without any extra files. To also **read** the text, the app needs one language file.
+It is not stored in this repository because it is big.
+
+1. Download [`tesseract-ocr-3.01.eng.tar.gz`](https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/tesseract-ocr/tesseract-ocr-3.01.eng.tar.gz) (about 4 MB).
+2. Take out only `eng.traineddata`:
+
+   ```bash
+   tar -xzf tesseract-ocr-3.01.eng.tar.gz tesseract-ocr/tessdata/eng.traineddata
+   ```
+
+3. Copy it to `PlakaTanimaSistemi/PlakaTanima.Wpf/tessdata/eng.traineddata`.
+4. Build again.
+
+**Important:** use version **3.01**. The OCR engine in this project is Tesseract 3.01. A newer language file (3.04 or later) makes it crash.
+If the file is missing, the app still finds the plate and tells you that it cannot read the characters.
+The OCR engine also needs the *Visual C++ 2008 runtime* on the computer.
+
+## How it works
+
+```mermaid
+flowchart LR
+    A["Photo"] --> B["Resize<br/>max 480 x 360"]
+    B --> C["Grey"]
+    C --> D["Median filter"]
+    D --> E["Sobel edges"]
+    E --> F["Otsu threshold"]
+    F --> G["Erosion"]
+    G --> H["Dilation"]
+    H --> I["Remove small blobs"]
+    I --> J["Closing"]
+    J --> K["Erosion"]
+    K --> L["Keep big blobs"]
+    L --> M{"Plate shape?<br/>width / height<br/>3 to 5.7"}
+    M -- yes --> N["Crop the plate"]
+    N --> O["OCR"]
+    O --> P["Check Turkish<br/>plate format"]
+    M -- no --> Q["No plate found"]
+```
+
+The [Turkish README](README.tr.md) explains each step with pictures and code.
+
+## UML diagrams
+
+### Class diagram
+
+```mermaid
+classDiagram
+    direction LR
+
+    class MainWindow {
+        +Sample1 : string
+        +Sample2 : string
+    }
+    class MainViewModel {
+        +Steps : ObservableCollection~StepCardViewModel~
+        +State : DetectionState
+        +DisplayImage : BitmapSource
+        +PlateImage : BitmapSource
+        +RecognizedText : string
+        +OcrNote : string
+        +OpenCommand : ICommand
+        +DetectCommand : ICommand
+        +SampleCommand : ICommand
+        +ShowResultCommand : ICommand
+        +LoadImage(path) void
+        +Shutdown() void
+    }
+    class ObservableObject {
+        <<abstract>>
+    }
+    class RelayCommand
+    class StepCardViewModel {
+        +Index : int
+        +Title : string
+        +Description : string
+        +Image : BitmapSource
+    }
+    class DetectionState {
+        <<enumeration>>
+        Idle
+        Running
+        Found
+        NotFound
+        Failed
+    }
+    class PlateRecognizer {
+        +StepCount : int
+        +Recognize(Bitmap original, IProgress~PipelineStep~ progress) PlateRecognitionResult
+    }
+    class PipelineStep {
+        +Index : int
+        +Total : int
+        +Title : string
+        +Description : string
+        +Image : Bitmap
+    }
+    class PlateRecognitionResult {
+        +Source : Bitmap
+        +Annotated : Bitmap
+        +PlateImage : Bitmap
+        +BlobCount : int
+        +ElapsedMilliseconds : long
+        +Found : bool
+    }
+    class PlateCandidate {
+        +Bounds : Rectangle
+        +Area : int
+        +AspectRatio : float
+    }
+    class PlateTextReader {
+        +IsAvailable : bool
+        +UnavailableReason : string
+        +Read(Bitmap plate) PlateText
+        +Dispose() void
+    }
+    class PlateText {
+        +Text : string
+        +Raw : string
+        +IsValidFormat : bool
+    }
+    class ExtBitmap {
+        <<static>>
+        +MedianFilter(size) Bitmap
+        +Sobel3x3Filter() Bitmap
+        +DilateAndErodeFilter(size, type) Bitmap
+        +CloseMorphologyFilter(size) Bitmap
+    }
+
+    MainWindow --> MainViewModel : DataContext
+    MainViewModel --|> ObservableObject
+    MainViewModel *-- StepCardViewModel : Steps
+    MainViewModel --> DetectionState : State
+    MainViewModel ..> RelayCommand : creates
+    MainViewModel ..> PlateRecognizer : uses
+    MainViewModel ..> PlateTextReader : uses
+    StepCardViewModel ..> PipelineStep : built from
+    PlateRecognizer ..> PipelineStep : reports
+    PlateRecognizer --> PlateRecognitionResult : returns
+    PlateRecognizer ..> ExtBitmap : uses
+    PlateRecognitionResult o-- PlateCandidate : Candidates
+    PlateTextReader --> PlateText : returns
+```
+
+`PlakaTanima.Wpf` holds `MainWindow`, `MainViewModel`, `StepCardViewModel` and the helper classes.
+`PlakaTanima.Core` holds the plate and OCR classes and has no window code, so it can be reused.
+
+### Sequence diagram: finding a plate
+
+```mermaid
+sequenceDiagram
+    actor User
+    participant UI as MainWindow
+    participant VM as MainViewModel
+    participant R as PlateRecognizer
+    participant T as PlateTextReader
+
+    User->>UI: Click the detect button
+    UI->>VM: DetectCommand
+    VM->>R: Recognize(photo, progress) on a background task
+    loop 13 steps
+        R-->>VM: PipelineStep with title and image
+        VM-->>UI: Add a step card and move the progress bar
+    end
+    R-->>VM: PlateRecognitionResult
+    VM->>T: Read(plate image)
+    T-->>VM: PlateText
+    VM-->>UI: Show the plate, the text and the numbers
+```
+
+## Releases and branch names
+
+Every pull request that is merged into `master` makes a new release with a version like `v1.2.3`.
+The version goes up by the **name of the branch**:
+
+| Branch name contains | Label | Version change | Example |
+|---|---|---|---|
+| `major` | `breaking` | first number | `v1.2.3` → `v2.0.0` |
+| `dev` | `enhancement` | second number | `v1.2.3` → `v1.3.0` |
+| `hotfix` | `bug` | third number | `v1.2.3` → `v1.2.4` |
+| none of these | none | third number | `v1.2.3` → `v1.2.4` |
+
+The GitHub Actions in `.github/workflows` also build the project, add the label and assign the pull request to `NisanurBulut`.
+
+## Good to know
+
+- The app was made for photos of the **front** of a car, with a plate you can see clearly.
+- The text reading was only tested on the two sample photos. Other photos may give wrong text.
+  If the text does not look like a Turkish plate, the app shows it in yellow so you can check it.
+- The old WinForms app in `legacy` finds the plate but does not read the text.
+
+## Licence
+
+GNU General Public License v3.0. See [`COPYING.txt`](PlakaTanimaSistemi/COPYING.txt).
