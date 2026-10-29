@@ -6,6 +6,17 @@ Probleminizin çözümünü öğrenmek veya çözümü başlatmak için bu proje
 
 Araç Fotoğraflarından plaka tanıma işlemi yapan masaüstü uygulamadır.
 
+**Proje yapısı**
+
+| Klasör | Açıklama |
+|---|---|
+| `PlakaTanimaSistemi/PlakaTanima.Wpf` | **Varsayılan uygulama** (WPF). Görseli seçin ya da sürükleyin, işlem hattını adım adım izleyin. |
+| `PlakaTanimaSistemi/PlakaTanima.Core` | Görüntü işleme ve plaka bulma kütüphanesi (WPF uygulamasının kullandığı çekirdek). |
+| `PlakaTanimaSistemi/legacy/LicensePlateRecognition` | Eski WinForms uygulaması. Yalnızca referans olarak saklanır, geliştirilmez. |
+
+Çalıştırmak için `PlakaTanimaSistemi/PlakaTanima.sln` dosyasını açın; başlangıç projesi `PlakaTanima.Wpf`'tir.
+Karakter okuma (OCR) için `PlakaTanimaSistemi/PlakaTanima.Wpf/tessdata/README.txt` içindeki dil verisini koyun; yoksa uygulama plakayı bulur ama karakterleri okumaz.
+
 **1.	Plaka Tanıma Yazılımı Nedir?**
 
 Plaka Tanıma Sistemi kameralardan elde edilen araç görüntüsünün üzerinde plaka bölgesi tespit edilerek ve ayrıştırılarak, plaka üzerinde bulunan karakterlerin optik karakter tanıma (Görüntü İşleme) yöntemleri ile okunması işlemidir. Dijital görüntülerin alınması sayesinde plaka okumasının gerçekleştiriliyor olması sayesinde, yazılım tabanlı olarak çalışırlar. Projeye göre değişik uygulamaları olup, uygulamaya özel algoritma ve donanım yapısının bir araya getirilmesi ile oluşturulan bir sistemdir.
