@@ -1,0 +1,49 @@
+name: Auto Label PR
+
+# Labels a pull request from the name of its source branch. The Release workflow reads these labels
+# to pick the next version:  *major* -> breaking (X.0.0)   *dev* -> enhancement (x.Y.0)   *hotfix* -> bug (x.y.Z)
+on:
+  pull_request:
+    types: [opened, reopened, ready_for_review]
+
+permissions:
+  pull-requests: write
+  issues: write
+
+jobs:
+  label:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const branch = context.payload.pull_request.head.ref.toLowerCase();
+
+            // [branch içinde geçen kelime, etiket, renk, açıklama]
+            const rules = [
+              ['major',  'breaking',    'b60205', 'Major sürüm: X.0.0'],
+              ['dev',    'enhancement', 'a2eeef', 'Minor sürüm: x.Y.0'],
+              ['hotfix', 'bug',         'd73a4a', 'Patch sürümü: x.y.Z'],
+            ];
+
+            const labels = rules.filter(([word]) => branch.includes(word));
+            if (labels.length === 0) {
+              core.info(`"${branch}" dalı için etiket kuralı yok.`);
+              return;
+            }
+
+            for (const [, name, color, description] of labels) {
+              try {
+                await github.rest.issues.getLabel({ owner: context.repo.owner, repo: context.repo.repo, name });
+              } catch (error) {
+                if (error.status !== 404) throw error;
+                await github.rest.issues.createLabel({ owner: context.repo.owner, repo: context.repo.repo, name, color, description });
+              }
+            }
+
+            await github.rest.issues.addLabels({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.pull_request.number,
+              labels: labels.map(([, name]) => name),
+            });

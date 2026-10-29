@@ -1,0 +1,81 @@
+name: Release
+
+# Every push to master (i.e. every merged pull request) produces a new GitHub release.
+# A push trigger is used on purpose: unlike `pull_request: closed` it also gets a
+# write-enabled token when the PR was opened by Dependabot.
+on:
+  push:
+    branches: [ "master" ]
+
+permissions:
+  contents: write
+  pull-requests: read
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # full history so existing tags are available
+
+      - name: Create the next tag and release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+
+          # The pull request that produced this commit (merge, squash or rebase).
+          pr=$(gh api "repos/$GITHUB_REPOSITORY/commits/$GITHUB_SHA/pulls" --jq '.[0] // empty')
+          if [ -z "$pr" ]; then
+            echo "No pull request is associated with $GITHUB_SHA (direct push) - skipping release."
+            exit 0
+          fi
+          number=$(jq -r '.number' <<< "$pr")
+          title=$(jq -r '.title' <<< "$pr")
+          labels=$(jq -r '.labels[].name' <<< "$pr")
+          branch=$(jq -r '.head.ref' <<< "$pr")   # source branch of the merged PR
+
+          # Tags look like v<major>.<minor>.<patch> (e.g. v0.4.0); start from 0.0.0 when none exist.
+          # This repository's first release used a four-part tag (v1.0.0.0). It is read as 1.0.0 so the
+          # numbering simply continues from there.
+          last=$(
+            git tag --list 'v*' | while read -r t; do
+              if [[ $t =~ ^v([0-9]+)\.([0-9]+)\.([0-9]+)\.([0-9]+)$ ]]; then
+                echo "${BASH_REMATCH[1]}.${BASH_REMATCH[2]}.${BASH_REMATCH[3]}"
+              elif [[ $t =~ ^v([0-9]+)\.([0-9]+)\.([0-9]+)$ ]]; then
+                echo "${BASH_REMATCH[1]}.${BASH_REMATCH[2]}.${BASH_REMATCH[3]}"
+              fi
+            done | sort -V | tail -n 1
+          )
+          last=${last:-0.0.0}
+          IFS=. read -r major minor patch <<< "$last"
+
+          # A PR labelled "breaking" (added automatically to branches named *major*, or by hand) or a source
+          # branch whose name contains "major" bumps the major number (minor and patch reset),
+          # a PR labelled "enhancement" (branches named *dev*) bumps the minor number,
+          # everything else (e.g. *hotfix* branches) bumps the patch number.
+          if grep -qx breaking <<< "$labels" || [[ "${branch,,}" == *major* ]]; then
+            major=$((major + 1)); minor=0; patch=0
+          elif grep -qx enhancement <<< "$labels"; then
+            minor=$((minor + 1)); patch=0
+          else
+            patch=$((patch + 1))
+          fi
+          tag="v$major.$minor.$patch"
+
+          # Release notes: PR description + link, then GitHub's auto-generated changelog.
+          {
+            jq -r '.body // ""' <<< "$pr"
+            printf '\n\nPull request: #%s\n' "$number"
+          } > notes.md
+
+          gh release create "$tag" \
+            --target "$GITHUB_SHA" \
+            --title "$tag - $title" \
+            --notes-file notes.md \
+            --generate-notes
